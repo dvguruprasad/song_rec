@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="song_rec" default="all">
+  
+  
+  <property file="build.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="128m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/*.rbc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.ear"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.swc"/>
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <include name="**/?*.properties"/>
+    <include name="**/?*.xml"/>
+    <include name="**/?*.gif"/>
+    <include name="**/?*.png"/>
+    <include name="**/?*.jpeg"/>
+    <include name="**/?*.jpg"/>
+    <include name="**/?*.html"/>
+    <include name="**/?*.dtd"/>
+    <include name="**/?*.tld"/>
+    <include name="**/?*.ftl"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.6" value="${jdk.home.1.6}/bin"/>
+  <path id="jdk.classpath.1.6">
+    <fileset dir="${jdk.home.1.6}">
+      <include name="lib/deploy.jar"/>
+      <include name="lib/dt.jar"/>
+      <include name="lib/javaws.jar"/>
+      <include name="lib/jce.jar"/>
+      <include name="lib/jconsole.jar"/>
+      <include name="lib/management-agent.jar"/>
+      <include name="lib/plugin.jar"/>
+      <include name="lib/sa-jdi.jar"/>
+      <include name="../Classes/alt-rt.jar"/>
+      <include name="../Classes/alt-string.jar"/>
+      <include name="../Classes/charsets.jar"/>
+      <include name="../Classes/classes.jar"/>
+      <include name="../Classes/jsse.jar"/>
+      <include name="../Classes/ui.jar"/>
+      <include name="lib/ext/apple_provider.jar"/>
+      <include name="lib/ext/dnsns.jar"/>
+      <include name="lib/ext/localedata.jar"/>
+      <include name="lib/ext/sunjce_provider.jar"/>
+      <include name="lib/ext/sunpkcs11.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.6}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.6}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.6"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.hadoop-core-1.0.3.classpath">
+    <pathelement location="${basedir}/../../hadoop-1.0.3/hadoop-core-1.0.3.jar"/>
+  </path>
+
+  <!-- Modules -->
+
+  <!-- Module song_rec -->
+  
+  <dirname property="module.song_rec.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.song_rec" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.song_rec" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.song_rec" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.song_rec" value="${compiler.args}"/>
+  
+  <property name="output.dir" value="${module.song_rec.basedir}/out"/>
+  <property name="song_rec.output.dir" value="${module.song_rec.basedir}/out/production/song_rec"/>
+  <property name="song_rec.testoutput.dir" value="${module.song_rec.basedir}/out/test/song_rec"/>
+  
+  <path id="song_rec.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="song_rec.module.production.classpath">
+    <path refid="${module.jdk.classpath.song_rec}"/>
+    <path refid="library.hadoop-core-1.0.3.classpath"/>
+  </path>
+  
+  <path id="song_rec.runtime.production.module.classpath">
+    <pathelement location="${song_rec.output.dir}"/>
+    <path refid="library.hadoop-core-1.0.3.classpath"/>
+  </path>
+  
+  <path id="song_rec.module.classpath">
+    <path refid="${module.jdk.classpath.song_rec}"/>
+    <pathelement location="${song_rec.output.dir}"/>
+    <path refid="library.hadoop-core-1.0.3.classpath"/>
+  </path>
+  
+  <path id="song_rec.runtime.module.classpath">
+    <pathelement location="${song_rec.testoutput.dir}"/>
+    <pathelement location="${song_rec.output.dir}"/>
+    <path refid="library.hadoop-core-1.0.3.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.song_rec">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.song_rec">
+    <patternset refid="excluded.from.module.song_rec"/>
+  </patternset>
+  
+  <path id="song_rec.module.sourcepath">
+    <dirset dir="${module.song_rec.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  <path id="song_rec.module.test.sourcepath">
+    <dirset dir="${module.song_rec.basedir}">
+      <include name="test"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.song_rec" depends="compile.module.song_rec.production,compile.module.song_rec.tests" description="Compile module song_rec"/>
+  
+  <target name="compile.module.song_rec.production" description="Compile module song_rec; production classes">
+    <mkdir dir="${song_rec.output.dir}"/>
+    <javac destdir="${song_rec.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.song_rec}/javac">
+      <compilerarg line="${compiler.args.song_rec}"/>
+      <bootclasspath refid="song_rec.module.bootclasspath"/>
+      <classpath refid="song_rec.module.production.classpath"/>
+      <src refid="song_rec.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.song_rec"/>
+    </javac>
+    
+    <copy todir="${song_rec.output.dir}">
+      <fileset dir="${module.song_rec.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.song_rec.tests" description="compile module song_rec; test classes" unless="skip.tests">
+    <mkdir dir="${song_rec.testoutput.dir}"/>
+    <javac destdir="${song_rec.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.song_rec}/javac">
+      <compilerarg line="${compiler.args.song_rec}"/>
+      <bootclasspath refid="song_rec.module.bootclasspath"/>
+      <classpath refid="song_rec.module.classpath"/>
+      <src refid="song_rec.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.song_rec"/>
+    </javac>
+    
+    <copy todir="${song_rec.testoutput.dir}">
+      <fileset dir="${module.song_rec.basedir}/test">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.song_rec" description="cleanup module">
+    <delete dir="${song_rec.output.dir}"/>
+    <delete dir="${song_rec.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.song_rec" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.song_rec" description="build all modules"/>
+
+  <target name="create.jar">
+      <jar destfile="${output.dir}/popular_songs.jar"
+           basedir="${song_rec.output.dir}"
+           excludes="**/Test.class"
+              />
+  </target>
+  <target name="all" depends="build.modules, create.jar" description="build all"/>
+</project>
