@@ -1,7 +1,6 @@
 package com.songrec.jobs;
 
 import com.songrec.SongPlayCountPair;
-import com.songrec.SongPlayCountPairs;
 import com.songrec.mappers.UserVectorGeneratorMapper;
 import com.songrec.reducers.UserVectorGeneratorReducer;
 import org.apache.hadoop.fs.Path;
@@ -9,7 +8,6 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
 import org.apache.hadoop.util.ToolRunner;
 
 public class UserVectorGeneratorJob extends AbstactJob {
@@ -27,13 +25,11 @@ public class UserVectorGeneratorJob extends AbstactJob {
         FileInputFormat.setInputPaths(job, inputPath);
         FileOutputFormat.setOutputPath(job, new Path(outputPath));
 
-        job.setOutputFormatClass(SequenceFileOutputFormat.class);
-
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(SongPlayCountPair.class);
 
         job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(SongPlayCountPairs.class);
+        job.setOutputValueClass(Text.class);
 
         job.setMapperClass(UserVectorGeneratorMapper.class);
         job.setReducerClass(UserVectorGeneratorReducer.class);

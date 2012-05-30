@@ -1,36 +1,44 @@
 package com.songrec.mappers;
 
+import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
-import com.songrec.SongPlayCountPair;
-import com.songrec.SongPlayCountPairs;
-import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-public class ClusterUserMapper extends Mapper<Text, SongPlayCountPairs, LongWritable, Text> {
-//    @Override
-//    protected void map(LongWritable key, Text triplet, Context context) throws IOException, InterruptedException {
-//        String[] tokens = triplet.toString().split("\t");
-//        String userId = tokens[0];
-//        String songId = tokens[1];
-//        context.write(new Text(userId), new LongWritable(hash(songId)));
-//    }
-
+public class ClusterUserMapper extends Mapper<Text, Text, Text, Text> {
     @Override
-    protected void map(Text userId, SongPlayCountPairs pairs, Context context) throws IOException, InterruptedException {
-        long minHash = Long.MIN_VALUE;
-        for(SongPlayCountPair pair : pairs.get()){
-            long hash = hash(pair.songId());
+    protected void map(Text userId, Text songPlayCounts, Context context) throws IOException, InterruptedException {
+        String[] songs = songPlayCounts.toString().split(";");
+        ArrayList<String> songIds = new ArrayList<String>(); 
+        for(String song : songs){
+            songIds.add(song.split(",")[0]);
+        }
+        String clusterId = sha1MinHash(songIds) + "_" + md5MinHash(songIds) + "_" + goodFastMinHash(songIds);
+        context.write(new Text(clusterId), new Text(userId));
+    }
+
+    private String sha1MinHash(ArrayList<String> songIds){
+        return String.valueOf(minHash(songIds, Hashing.sha1()));
+    }
+
+    private String md5MinHash(ArrayList<String> songIds){
+        return String.valueOf(minHash(songIds, Hashing.md5()));
+    }
+
+    private String goodFastMinHash(ArrayList<String> songIds){
+        return String.valueOf(minHash(songIds, Hashing.goodFastHash(64)));
+    }
+
+    private long minHash(ArrayList<String> songIds, HashFunction hashFunction) {
+        long minHash = Long.MAX_VALUE;
+        for(String songId : songIds){
+            long hash = Math.abs(hashFunction.newHasher().putString(songId).hash().asLong());
             if(hash < minHash)
                 minHash = hash;
         }
-        context.write(new LongWritable(minHash), new Text(userId));
-    }
-
-
-    private long hash(String value){
-        return Hashing.sha1().newHasher().putString(value).hash().asLong();
+        return minHash;
     }
 }

@@ -3,11 +3,10 @@ package com.songrec.jobs;
 import com.songrec.mappers.ClusterUserMapper;
 import com.songrec.reducers.ClusterUserReducer;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
-import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.KeyValueTextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.ToolRunner;
 
@@ -26,10 +25,10 @@ public class ClusterUserJob extends AbstactJob {
         FileInputFormat.setInputPaths(job, inputPath);
         FileOutputFormat.setOutputPath(job, new Path(outputPath));
 
-        job.setMapOutputKeyClass(LongWritable.class);
-        job.setMapOutputValueClass(Text.class);
+        job.setInputFormatClass(KeyValueTextInputFormat.class);
 
-        job.setInputFormatClass(SequenceFileInputFormat.class);
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(Text.class);
 
         job.setMapperClass(ClusterUserMapper.class);
         job.setReducerClass(ClusterUserReducer.class);
