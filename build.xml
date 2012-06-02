@@ -97,6 +97,9 @@
     <path id="library.guava.classpath">
         <pathelement location="${basedir}/lib/guava-12.0.jar"/>
     </path>
+    <path id="library.junit.classpath">
+        <pathelement location="${basedir}/lib/junit-4.11.jar"/>
+    </path>
 
   <!-- Modules -->
 
@@ -134,6 +137,7 @@
     <path refid="${module.jdk.classpath.song_rec}"/>
     <pathelement location="${song_rec.output.dir}"/>
     <path refid="library.hadoop-core-1.0.3.classpath"/>
+    <path refid="library.junit.classpath"/>
   </path>
   
   <path id="song_rec.runtime.module.classpath">

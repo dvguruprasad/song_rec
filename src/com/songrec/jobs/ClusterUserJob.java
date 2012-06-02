@@ -14,6 +14,10 @@ public class ClusterUserJob extends AbstactJob {
     private String inputPath;
     private String outputPath;
 
+    public ClusterUserJob(String inputPath) {
+        this(inputPath, outputPath(ClusterUserJob.class.getName()));
+    }
+
     public ClusterUserJob(String inputPath, String outputPath) {
         this.inputPath = inputPath;
         this.outputPath = outputPath;

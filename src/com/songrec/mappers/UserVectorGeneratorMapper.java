@@ -14,6 +14,6 @@ public class UserVectorGeneratorMapper extends Mapper<LongWritable, Text, Text, 
         String userId = tokens[0];
         String songId = tokens[1];
         String playCount = tokens[2];
-        context.write(new Text(userId), new SongPlayCountPair(songId, playCount));
+        context.write(new Text(userId), new SongPlayCountPair(songId, Short.valueOf(playCount)));
     }
 }

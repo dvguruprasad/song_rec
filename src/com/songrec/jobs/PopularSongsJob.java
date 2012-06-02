@@ -2,17 +2,15 @@ package com.songrec.jobs;
 
 import com.songrec.mappers.PopularSongsMapper;
 import com.songrec.reducers.PopularSongsReducer;
-import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-public class PopularSongsJob extends Configured implements Tool {
+public class PopularSongsJob extends AbstactJob {
 
     public static void main(String[] args) throws Exception {
         int res = ToolRunner.run(new PopularSongsJob(), args);
