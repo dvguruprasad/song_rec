@@ -28,7 +28,7 @@ public class SongPlayCountPairs implements Writable, Iterable<SongPlayCountPair>
         out.writeInt(pairs.size());
         for(SongPlayCountPair pair : pairs){
             DataOutputX.writeString(out, pair.songId());
-            out.writeLong(pair.playCount());
+            out.writeShort(pair.playCount());
         }
     }
 
@@ -52,5 +52,13 @@ public class SongPlayCountPairs implements Writable, Iterable<SongPlayCountPair>
 
     public SongPlayCountPair get(int index){
         return pairs.get(index);
+    }
+
+    @Override
+    public String toString() {
+        String result = "";
+        for(SongPlayCountPair pair : pairs)
+            result += "(" + pair.songId() + "," + pair.playCount() + "),";
+        return result;
     }
 }

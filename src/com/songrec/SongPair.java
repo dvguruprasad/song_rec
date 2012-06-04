@@ -1,5 +1,7 @@
 package com.songrec;
 
+import com.google.common.hash.HashCode;
+import com.google.common.hash.Hashing;
 import com.songrec.utils.DataInputX;
 import com.songrec.utils.DataOutputX;
 import org.apache.hadoop.io.WritableComparable;
@@ -32,10 +34,11 @@ public class SongPair implements WritableComparable<SongPair> {
 
     @Override
     public int hashCode() {
-        int result = firstSongId.hashCode();
-        result = 31 * result + secondSongId.hashCode();
+        int result = sha1Hashcode(firstSongId).asInt();
+        result = 31 * result + sha1Hashcode(secondSongId).asInt();
         return result;
     }
+
 
     @Override
     public void write(DataOutput out) throws IOException {
@@ -59,5 +62,9 @@ public class SongPair implements WritableComparable<SongPair> {
     @Override
     public String toString() {
         return firstSongId + "," + secondSongId;
+    }
+
+    private HashCode sha1Hashcode(String str) {
+        return Hashing.sha1().newHasher().putString(str).hash();
     }
 }

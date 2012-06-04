@@ -26,7 +26,7 @@ public class ItemSimilarityGeneratorJob extends AbstactJob {
     public int run(String[] strings) throws Exception {
         Job job = new Job(getConf(), "ItemSimilarityGenerator");
 
-        FileInputFormat.setInputPaths(job, inputPath);
+        FileInputFormat.setInputPaths(job, new Path(inputPath));
         FileOutputFormat.setOutputPath(job, new Path(outputPath));
 
         job.setInputFormatClass(SequenceFileInputFormat.class);
@@ -36,6 +36,7 @@ public class ItemSimilarityGeneratorJob extends AbstactJob {
         job.setMapOutputValueClass(PlayCountPair.class);
 
         job.setReducerClass(ItemSimilarityReducer.class);
+        job.setOutputValueClass(SongPair.class);
         job.setOutputValueClass(DoubleWritable.class);
 
         job.setJarByClass(ItemSimilarityGeneratorJob.class);

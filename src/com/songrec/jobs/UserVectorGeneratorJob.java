@@ -31,14 +31,14 @@ public class UserVectorGeneratorJob extends AbstactJob {
         FileInputFormat.setInputPaths(job, inputPath);
         FileOutputFormat.setOutputPath(job, new Path(outputPath));
 
+        job.setMapperClass(UserVectorGeneratorMapper.class);
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(SongPlayCountPair.class);
 
+        job.setReducerClass(UserVectorGeneratorReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(SongPlayCountPairs.class);
 
-        job.setMapperClass(UserVectorGeneratorMapper.class);
-        job.setReducerClass(UserVectorGeneratorReducer.class);
 
         job.setOutputFormatClass(SequenceFileOutputFormat.class);
 

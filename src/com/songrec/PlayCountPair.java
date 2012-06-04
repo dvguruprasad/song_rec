@@ -28,8 +28,8 @@ public class PlayCountPair implements WritableComparable<PlayCountPair> {
 
     @Override
     public void write(DataOutput out) throws IOException {
-        out.writeLong(firstSongPlayCount);
-        out.writeLong(secondSongPlayCount);
+        out.writeShort(firstSongPlayCount);
+        out.writeShort(secondSongPlayCount);
     }
 
     @Override
@@ -47,5 +47,25 @@ public class PlayCountPair implements WritableComparable<PlayCountPair> {
 
     private int compare(long a, long b) {
         return a > b ? 1 : ((a < b)? -1 : 0);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        PlayCountPair that = (PlayCountPair) o;
+
+        if (firstSongPlayCount != that.firstSongPlayCount) return false;
+        if (secondSongPlayCount != that.secondSongPlayCount) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) firstSongPlayCount;
+        result = 31 * result + (int) secondSongPlayCount;
+        return result;
     }
 }
