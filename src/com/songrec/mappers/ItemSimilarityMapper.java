@@ -1,9 +1,9 @@
 package com.songrec.mappers;
 
-import com.songrec.PlayCountPair;
-import com.songrec.SongPair;
-import com.songrec.SongPlayCountPair;
-import com.songrec.SongPlayCountPairs;
+import com.songrec.dto.PlayCountPair;
+import com.songrec.dto.SongPair;
+import com.songrec.dto.SongPlayCountPair;
+import com.songrec.dto.SongPlayCountPairs;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 

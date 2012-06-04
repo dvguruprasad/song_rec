@@ -1,4 +1,4 @@
-package com.songrec;
+package com.songrec.dto;
 
 import org.apache.hadoop.io.WritableComparable;
 

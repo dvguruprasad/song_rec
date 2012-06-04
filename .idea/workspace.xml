@@ -61,7 +61,7 @@
       <file leaf-file-name="ItemSimilarityGeneratorJob.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/songrec/jobs/ItemSimilarityGeneratorJob.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="13" selection-start="561" selection-end="561" vertical-scroll-proportion="0.0">
+            <state line="15" column="13" selection-start="569" selection-end="569" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -88,7 +88,7 @@
       <file leaf-file-name="UserVectorGeneratorJob.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/songrec/jobs/UserVectorGeneratorJob.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="112" selection-start="1745" selection-end="1745" vertical-scroll-proportion="0.7410359">
+            <state line="26" column="51" selection-start="987" selection-end="987" vertical-scroll-proportion="0.34336525">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -97,9 +97,9 @@
         </entry>
       </file>
       <file leaf-file-name="SongPlayCountPair.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/songrec/SongPlayCountPair.java">
+        <entry file="file://$PROJECT_DIR$/src/com/songrec/dto/SongPlayCountPair.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="17" selection-start="943" selection-end="943" vertical-scroll-proportion="0.0">
+            <state line="38" column="17" selection-start="947" selection-end="947" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -119,9 +119,9 @@
         </entry>
       </file>
       <file leaf-file-name="SongPair.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/songrec/SongPair.java">
+        <entry file="file://$PROJECT_DIR$/src/com/songrec/dto/SongPair.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="65" selection-start="1092" selection-end="1092" vertical-scroll-proportion="0.0">
+            <state line="37" column="65" selection-start="1096" selection-end="1096" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -339,24 +339,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="algorithms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="song_rec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="song_rec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="songrec" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -376,98 +358,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="songrec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="workflows" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="song_rec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="song_rec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="songrec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="song_rec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="song_rec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="songrec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="reducers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="song_rec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="song_rec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="songrec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mappers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="song_rec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="song_rec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="songrec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jobs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -511,6 +401,9 @@
       <recent name="com.songrec.algorithms" />
       <recent name="com.songrec" />
       <recent name="com.songrec.jobs" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.songrec.dto" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.SongPlayCountPairsTest.shouldReadFields">
@@ -614,8 +507,8 @@
       <module name="song_rec" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.songrec.algorithms" />
-      <option name="MAIN_CLASS_NAME" value="com.songrec.algorithms.SongPlayCountPairsTest" />
+      <option name="PACKAGE_NAME" value="com.songrec.dto" />
+      <option name="MAIN_CLASS_NAME" value="com.songrec.dto.SongPlayCountPairsTest" />
       <option name="METHOD_NAME" value="shouldReadFields" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -642,8 +535,8 @@
       <module name="song_rec" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.songrec.algorithms" />
-      <option name="MAIN_CLASS_NAME" value="com.songrec.algorithms.SongPlayCountPairsTest" />
+      <option name="PACKAGE_NAME" value="com.songrec.dto" />
+      <option name="MAIN_CLASS_NAME" value="com.songrec.dto.SongPlayCountPairsTest" />
       <option name="METHOD_NAME" value="foo" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -846,7 +739,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2888889" sideWeight="0.6708229" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2888889" sideWeight="0.6708229" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917705" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -940,20 +833,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="0" selection-start="924" selection-end="924" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#655#662#0" expanded="true" />
-            <element signature="e#723#730#0" expanded="true" />
+            <element signature="e#629#636#0" expanded="true" />
+            <element signature="e#697#704#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/songrec/SongPlayCountPairs.java">
+    <entry file="file://$PROJECT_DIR$/src/com/songrec/dto/SongPlayCountPairs.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="26" selection-start="969" selection-end="969" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/songrec/PlayCountPair.java">
+    <entry file="file://$PROJECT_DIR$/src/com/songrec/dto/PlayCountPair.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="3" selection-start="822" selection-end="822" vertical-scroll-proportion="0.0">
           <folding>
@@ -976,9 +869,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/songrec/SongPlayCountPair.java">
+    <entry file="file://$PROJECT_DIR$/src/com/songrec/dto/SongPlayCountPair.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="17" selection-start="943" selection-end="943" vertical-scroll-proportion="0.0">
+        <state line="38" column="17" selection-start="947" selection-end="947" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1001,9 +894,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/songrec/SongPair.java">
+    <entry file="file://$PROJECT_DIR$/src/com/songrec/dto/SongPair.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="65" selection-start="1092" selection-end="1092" vertical-scroll-proportion="0.0">
+        <state line="37" column="65" selection-start="1096" selection-end="1096" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1017,7 +910,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/songrec/jobs/ItemSimilarityGeneratorJob.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="561" selection-end="561" vertical-scroll-proportion="0.0">
+        <state line="15" column="13" selection-start="569" selection-end="569" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1038,7 +931,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/songrec/jobs/UserVectorGeneratorJob.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="112" selection-start="1745" selection-end="1745" vertical-scroll-proportion="0.7410359">
+        <state line="26" column="51" selection-start="987" selection-end="987" vertical-scroll-proportion="0.34336525">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

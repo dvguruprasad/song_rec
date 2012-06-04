@@ -1,7 +1,7 @@
-package com.songrec.algorithms;
+package com.songrec.dto;
 
-import com.songrec.SongPlayCountPair;
-import com.songrec.SongPlayCountPairs;
+import com.songrec.dto.SongPlayCountPair;
+import com.songrec.dto.SongPlayCountPairs;
 import org.junit.Assert;
 import org.junit.Test;
 

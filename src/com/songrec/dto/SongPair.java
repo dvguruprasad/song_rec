@@ -1,4 +1,4 @@
-package com.songrec;
+package com.songrec.dto;
 
 import com.google.common.hash.HashCode;
 import com.google.common.hash.Hashing;

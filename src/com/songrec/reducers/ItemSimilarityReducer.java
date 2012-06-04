@@ -1,10 +1,9 @@
 package com.songrec.reducers;
 
-import com.songrec.PlayCountPair;
-import com.songrec.SongPair;
+import com.songrec.dto.PlayCountPair;
+import com.songrec.dto.SongPair;
 import com.songrec.algorithms.PearsonCorrelationSimilarity;
 import org.apache.hadoop.io.DoubleWritable;
-import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;

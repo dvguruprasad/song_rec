@@ -1,8 +1,8 @@
 package com.songrec.jobs;
 
 
-import com.songrec.PlayCountPair;
-import com.songrec.SongPair;
+import com.songrec.dto.PlayCountPair;
+import com.songrec.dto.SongPair;
 import com.songrec.mappers.ItemSimilarityMapper;
 import com.songrec.reducers.ItemSimilarityReducer;
 import org.apache.hadoop.fs.Path;

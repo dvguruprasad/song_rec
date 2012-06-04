@@ -1,7 +1,7 @@
 package com.songrec.jobs;
 
-import com.songrec.SongPlayCountPair;
-import com.songrec.SongPlayCountPairs;
+import com.songrec.dto.SongPlayCountPair;
+import com.songrec.dto.SongPlayCountPairs;
 import com.songrec.mappers.UserVectorGeneratorMapper;
 import com.songrec.reducers.UserVectorGeneratorReducer;
 import org.apache.hadoop.fs.Path;

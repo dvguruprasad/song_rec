@@ -1,4 +1,4 @@
-package com.songrec;
+package com.songrec.dto;
 
 import com.songrec.utils.DataInputX;
 import com.songrec.utils.DataOutputX;
