@@ -39,7 +39,7 @@ public class UserVectorGeneratorJob extends AbstactJob {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(SongPlayCountPairs.class);
 
-
+        job.setNumReduceTasks(10);
         job.setOutputFormatClass(SequenceFileOutputFormat.class);
 
         job.setJarByClass(UserVectorGeneratorJob.class);

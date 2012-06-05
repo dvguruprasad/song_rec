@@ -39,6 +39,7 @@ public class ItemSimilarityGeneratorJob extends AbstactJob {
         job.setOutputValueClass(SongPair.class);
         job.setOutputValueClass(DoubleWritable.class);
 
+        job.setNumReduceTasks(10);
         job.setJarByClass(ItemSimilarityGeneratorJob.class);
         return job.waitForCompletion(true) ? 0 : 1;
     }

@@ -24,6 +24,6 @@ public class ItemSimilarityMapper extends Mapper<Text, SongPlayCountPairs, SongP
                 context.write(key, value);
             }
         }
-        context.getCounter(Counters.TIME_SPENT_IN_COMPUTAION_OF_SIMILARITIES_MAPPER).increment(System.nanoTime() - then);
+        context.getCounter(Counters.TIME_SPENT_IN_COMPUTAION_OF_SIMILARITIES).increment(System.nanoTime() - then);
     }
 }

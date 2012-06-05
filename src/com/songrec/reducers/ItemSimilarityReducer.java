@@ -25,6 +25,6 @@ public class ItemSimilarityReducer extends Reducer<SongPair, PlayCountPair, Song
 
         double similarityScore = PearsonCorrelationSimilarity.score(firstItemVector, secondItemVector);
         context.write(songPair, new DoubleWritable(similarityScore));
-        context.getCounter(com.songrec.Counters.TIME_SPENT_IN_COMPUTAION_OF_SIMILARITIES_REDUCER).increment(System.nanoTime() - then);
+        context.getCounter(com.songrec.Counters.TIME_SPENT_IN_COMPUTAION_OF_SIMILARITIES).increment(System.nanoTime() - then);
     }
 }
