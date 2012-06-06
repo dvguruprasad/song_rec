@@ -1,7 +1,5 @@
 package com.songrec.dto;
 
-import com.songrec.utils.DataInputX;
-import com.songrec.utils.DataOutputX;
 import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
@@ -9,30 +7,30 @@ import java.io.DataOutput;
 import java.io.IOException;
 
 public class SongPlayCountPair implements WritableComparable<SongPlayCountPair> {
-    private String songId;
+    private int songId;
     private short playCount;
 
     public SongPlayCountPair() {
     }
 
-    public SongPlayCountPair(String songId, short playCount) {
+    public SongPlayCountPair(int songId, short playCount) {
         this.songId = songId;
         this.playCount = playCount;
     }
 
     @Override
     public void write(DataOutput out) throws IOException {
-        DataOutputX.writeString(out, songId);
+        out.writeInt(songId);
         out.writeShort(playCount);
     }
 
     @Override
     public void readFields(DataInput in) throws IOException {
-        songId = DataInputX.readString(in);
+        songId = in.readInt();
         playCount = in.readShort();
     }
 
-    public String songId() {
+    public int songId() {
         return songId;
     }
 
@@ -47,7 +45,7 @@ public class SongPlayCountPair implements WritableComparable<SongPlayCountPair> 
 
     @Override
     public int compareTo(SongPlayCountPair songPlayCountPair) {
-        int result = songId.compareTo(songPlayCountPair.songId());
+        int result = songId > songPlayCountPair.songId() ? 1 : (songId < songPlayCountPair.songId() ? -1 : 0);
         if (result != 0) return result;
         return playCount > songPlayCountPair.playCount() ? 1 : (playCount < songPlayCountPair.playCount() ? -1 : 0);
     }

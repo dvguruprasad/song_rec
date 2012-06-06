@@ -17,9 +17,9 @@ public class ItemSimilarityGeneratorJob extends AbstactJob {
     private String inputPath;
     private String outputPath;
 
-    public ItemSimilarityGeneratorJob(String inputPath) {
+    public ItemSimilarityGeneratorJob(String inputPath, String outputPath) {
         this.inputPath = inputPath;
-        this.outputPath = outputPath(ItemSimilarityGeneratorJob.class.getSimpleName());
+        this.outputPath = outputPathForJob(ItemSimilarityGeneratorJob.class.getSimpleName(), outputPath);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class ItemSimilarityGeneratorJob extends AbstactJob {
     }
 
     public static void main(String args[]) throws Exception {
-        int res = ToolRunner.run(new ItemSimilarityGeneratorJob(args[0]), args);
+        int res = ToolRunner.run(new ItemSimilarityGeneratorJob(args[0], args[1]), args);
         System.exit(res);
     }
 }

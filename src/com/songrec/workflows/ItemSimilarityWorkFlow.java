@@ -5,8 +5,7 @@ import com.songrec.jobs.UserVectorGeneratorJob;
 
 public class ItemSimilarityWorkFlow extends WorkFlow {
     public static void main(String args[]) throws Exception {
-        String inputPath = args[0];
-        String userVectorPath = runJob(new UserVectorGeneratorJob(inputPath));
-        runJob(new ItemSimilarityGeneratorJob(userVectorPath));
+        String userVectorPath = runJob(new UserVectorGeneratorJob(args[0], args[1]));
+        runJob(new ItemSimilarityGeneratorJob(userVectorPath, args[1]));
     }
 }

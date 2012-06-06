@@ -2,8 +2,6 @@ package com.songrec.dto;
 
 import com.google.common.hash.HashCode;
 import com.google.common.hash.Hashing;
-import com.songrec.utils.DataInputX;
-import com.songrec.utils.DataOutputX;
 import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
@@ -11,13 +9,13 @@ import java.io.DataOutput;
 import java.io.IOException;
 
 public class SongPair implements WritableComparable<SongPair> {
-    private String firstSongId;
-    private String secondSongId;
+    private int firstSongId;
+    private int secondSongId;
 
     public SongPair() {
     }
 
-    public SongPair(String firstSongId, String secondSongId) {
+    public SongPair(int firstSongId, int secondSongId) {
         this.firstSongId = firstSongId;
         this.secondSongId = secondSongId;
     }
@@ -29,7 +27,10 @@ public class SongPair implements WritableComparable<SongPair> {
 
         SongPair songPair = (SongPair) o;
 
-        return firstSongId.equals(songPair.firstSongId) && secondSongId.equals(songPair.secondSongId);
+        if (firstSongId != songPair.firstSongId) return false;
+        if (secondSongId != songPair.secondSongId) return false;
+
+        return true;
     }
 
     @Override
@@ -39,24 +40,27 @@ public class SongPair implements WritableComparable<SongPair> {
         return result;
     }
 
-
     @Override
     public void write(DataOutput out) throws IOException {
-        DataOutputX.writeString(out, firstSongId);
-        DataOutputX.writeString(out, secondSongId);
+        out.writeInt(firstSongId);
+        out.writeInt(secondSongId);
     }
 
     @Override
     public void readFields(DataInput in) throws IOException {
-        firstSongId = DataInputX.readString(in);
-        secondSongId = DataInputX.readString(in);
+        firstSongId = in.readInt();
+        secondSongId = in.readInt();
     }
 
     @Override
     public int compareTo(SongPair songPair) {
-        int result = firstSongId.compareTo(songPair.firstSongId);
+        int result = compare(firstSongId, songPair.firstSongId);
         if(result != 0) return result;
-        return secondSongId.compareTo(songPair.secondSongId) ;
+        return compare(secondSongId, songPair.secondSongId) ;
+    }
+
+    private int compare(int one, int another) {
+        return one > another ? 1 : (one < another ? -1 : 0);
     }
 
     @Override
@@ -64,7 +68,7 @@ public class SongPair implements WritableComparable<SongPair> {
         return firstSongId + "," + secondSongId;
     }
 
-    private HashCode sha1Hashcode(String str) {
-        return Hashing.sha1().newHasher().putString(str).hash();
+    private HashCode sha1Hashcode(int songId) {
+        return Hashing.sha1().newHasher().putInt(songId).hash();
     }
 }

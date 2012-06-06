@@ -1,7 +1,5 @@
 package com.songrec.dto;
 
-import com.songrec.utils.DataInputX;
-import com.songrec.utils.DataOutputX;
 import org.apache.hadoop.io.Writable;
 
 import java.io.DataInput;
@@ -27,7 +25,7 @@ public class SongPlayCountPairs implements Writable, Iterable<SongPlayCountPair>
     public void write(DataOutput out) throws IOException {
         out.writeInt(pairs.size());
         for(SongPlayCountPair pair : pairs){
-            DataOutputX.writeString(out, pair.songId());
+            out.writeInt(pair.songId());
             out.writeShort(pair.playCount());
         }
     }
@@ -37,7 +35,7 @@ public class SongPlayCountPairs implements Writable, Iterable<SongPlayCountPair>
         int count = in.readInt();
         pairs = new ArrayList<SongPlayCountPair>();
         for(int i = 0;i < count; i++){
-            pairs.add(new SongPlayCountPair(DataInputX.readString(in), in.readShort()));
+            pairs.add(new SongPlayCountPair(in.readInt(), in.readShort()));
         }
     }
 

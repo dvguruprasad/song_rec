@@ -13,7 +13,7 @@ public class SortJob extends AbstactJob {
     public int run(String[] args) throws Exception {
         Job job = new Job(getConf(), "SortJob");
         FileInputFormat.setInputPaths(job, args[0]);
-        FileOutputFormat.setOutputPath(job, new Path(outputPath("SortJob")));
+        FileOutputFormat.setOutputPath(job, new Path(outputPathForJob(SortJob.class.getSimpleName(), args[1])));
 
         job.setMapperClass(SortMapper.class);
         job.setReducerClass(Reducer.class);

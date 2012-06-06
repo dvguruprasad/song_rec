@@ -10,8 +10,8 @@ public class SongPlayCountPairsTest {
     @Test
     public void shouldReadFields() throws IOException {
         ArrayList pairs = new ArrayList<SongPlayCountPair>();
-        pairs.add(new SongPlayCountPair("song1", (short) 5));
-        pairs.add(new SongPlayCountPair("song2", (short) 8));
+        pairs.add(new SongPlayCountPair(1, (short) 5));
+        pairs.add(new SongPlayCountPair(2, (short) 8));
         SongPlayCountPairs songPlayCountPairs = new SongPlayCountPairs(pairs);
         songPlayCountPairs.write(new DataOutputStream(new FileOutputStream("/tmp/foobar")));
 

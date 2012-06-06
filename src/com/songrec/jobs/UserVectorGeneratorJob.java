@@ -16,13 +16,9 @@ public class UserVectorGeneratorJob extends AbstactJob {
     private String inputPath;
     private String outputPath;
 
-    public UserVectorGeneratorJob(String inputPath) {
-        this(inputPath, outputPath(UserVectorGeneratorJob.class.getSimpleName()));
-    }
-
     public UserVectorGeneratorJob(String inputPath, String outputPath) {
         this.inputPath = inputPath;
-        this.outputPath = outputPath;
+        this.outputPath = outputPathForJob(UserVectorGeneratorJob.class.getSimpleName(), outputPath);
     }
 
     @Override
@@ -47,7 +43,7 @@ public class UserVectorGeneratorJob extends AbstactJob {
     }
 
     public static void main(String args[]) throws Exception {
-        int res = ToolRunner.run(new UserVectorGeneratorJob(args[0]), args);
+        int res = ToolRunner.run(new UserVectorGeneratorJob(args[0], args[1]), args);
         System.exit(res);
     }
 }
