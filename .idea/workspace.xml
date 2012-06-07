@@ -57,7 +57,19 @@
     <favorites_list name="song_rec" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="ItemSimilarityMapper.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/songrec/mappers/ItemSimilarityMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="45" selection-start="741" selection-end="741" vertical-scroll-proportion="0.3483871">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -72,22 +84,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/songrec/Counters.java" />
-        <option value="$PROJECT_DIR$/src/com/songrec/mappers/ItemSimilarityMapper.java" />
-        <option value="$PROJECT_DIR$/src/com/songrec/reducers/ItemSimilarityReducer.java" />
-        <option value="$PROJECT_DIR$/src/com/songrec/utils/MathX.java" />
-        <option value="$PROJECT_DIR$/src/com/songrec/mappers/UserVectorGeneratorMapper.java" />
-        <option value="$PROJECT_DIR$/src/com/songrec/dto/SongPlayCountPair.java" />
-        <option value="$PROJECT_DIR$/src/com/songrec/dto/SongPlayCountPairs.java" />
-        <option value="$PROJECT_DIR$/src/com/songrec/dto/SongPair.java" />
-        <option value="$PROJECT_DIR$/test/com/songrec/dto/SongPlayCountPairsTest.java" />
-        <option value="$PROJECT_DIR$/src/com/songrec/workflows/ItemSimilarityWorkFlow.java" />
-        <option value="$PROJECT_DIR$/src/com/songrec/jobs/AbstactJob.java" />
-        <option value="$PROJECT_DIR$/src/com/songrec/jobs/UserVectorGeneratorJob.java" />
         <option value="$PROJECT_DIR$/src/com/songrec/jobs/SortJob.java" />
+        <option value="$PROJECT_DIR$/src/com/songrec/jobs/ItemSimilarityGeneratorJob.java" />
+        <option value="$PROJECT_DIR$/src/com/songrec/mappers/ClusterUserMapper.java" />
+        <option value="$PROJECT_DIR$/src/com/songrec/reducers/ClusterUserReducer.java" />
         <option value="$PROJECT_DIR$/src/com/songrec/jobs/ClusterUserJob.java" />
         <option value="$PROJECT_DIR$/src/com/songrec/workflows/ClusterUserWorkflow.java" />
-        <option value="$PROJECT_DIR$/src/com/songrec/jobs/ItemSimilarityGeneratorJob.java" />
+        <option value="$PROJECT_DIR$/src/com/songrec/workflows/ClusterUserWorkFlow.java" />
+        <option value="$PROJECT_DIR$/src/com/songrec/mappers/GroupUsersByClusterMapper.java" />
+        <option value="$PROJECT_DIR$/src/com/songrec/reducers/GroupUsersByClusterReducer.java" />
+        <option value="$PROJECT_DIR$/src/com/songrec/reducers/ClusterIdGeneratorReducer.java" />
+        <option value="$PROJECT_DIR$/src/com/songrec/jobs/GroupUsersByClusterJob.java" />
+        <option value="$PROJECT_DIR$/src/com/songrec/workflows/WorkFlow.java" />
+        <option value="$PROJECT_DIR$/src/com/songrec/jobs/ClusterIdGeneratorJob.java" />
+        <option value="$PROJECT_DIR$/src/com/songrec/mappers/UserVectorGeneratorMapper.java" />
+        <option value="$PROJECT_DIR$/src/com/songrec/mappers/ItemSimilarityMapper.java" />
+        <option value="$PROJECT_DIR$/src/com/songrec/mappers/ClusterIdGeneratorMapper.java" />
       </list>
     </option>
   </component>
@@ -136,6 +148,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -324,19 +338,17 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
     <property name="project.structure.last.edited" value="Libraries" />
-    <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="GenerateAntBuildDialog.generateSingleFile" value="true" />
-    <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="GenerateAntBuildDialog.generateSingleFile" value="true" />
     <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="build" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
@@ -357,11 +369,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.songrec.mappers" />
       <recent name="com.songrec.reducers" />
+      <recent name="com.songrec.mappers" />
+      <recent name="com.songrec.jobs" />
       <recent name="com.songrec.algorithms" />
       <recent name="com.songrec" />
-      <recent name="com.songrec.jobs" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.songrec" />
@@ -546,6 +558,24 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -572,24 +602,6 @@
       <envs />
       <properties />
       <listeners />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -684,7 +696,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="874" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -697,7 +709,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917705" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -706,6 +717,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48877805" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917705" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -775,123 +787,131 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/com/songrec/dto/SongPlayCountPairsTest.java">
+    <entry file="jar://$PROJECT_DIR$/lib/hadoop-core-1.0.3.jar!/org/apache/hadoop/mapreduce/lib/input/KeyValueTextInputFormat.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="41" selection-start="1240" selection-end="1240" vertical-scroll-proportion="0.0">
+        <state line="7" column="13" selection-start="294" selection-end="294" vertical-scroll-proportion="0.12587413">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/songrec/reducers/GroupUsersByClusterReducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="30" selection-start="265" selection-end="265" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/songrec/dto/SongPair.java">
+    <entry file="file://$PROJECT_DIR$/src/com/songrec/mappers/GroupUsersByClusterMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="58" selection-start="1393" selection-end="1393" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/songrec/workflows/WorkFlow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="28" selection-start="172" selection-end="172" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/hadoop-core-1.0.3.jar!/org/apache/hadoop/mapreduce/lib/input/TextInputFormat.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="28" selection-start="670" selection-end="670" vertical-scroll-proportion="0.20979021">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/hadoop-core-1.0.3.jar!/org/apache/hadoop/mapreduce/lib/input/FileInputFormat.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="22" selection-start="184" selection-end="184" vertical-scroll-proportion="0.082417585">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/hadoop-core-1.0.3.jar!/org/apache/hadoop/fs/Path.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="11" selection-start="935" selection-end="935" vertical-scroll-proportion="0.3447802">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/songrec/jobs/ItemSimilarityGeneratorJob.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="79" selection-start="1862" selection-end="1862" vertical-scroll-proportion="0.7370518">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/songrec/mappers/ItemSimilarityMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="41" selection-start="930" selection-end="930" vertical-scroll-proportion="0.4183267">
+        <state line="7" column="13" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/songrec/workflows/ItemSimilarityWorkFlow.java">
+    <entry file="file://$PROJECT_DIR$/src/com/songrec/reducers/ClusterIdGeneratorReducer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="63" selection-start="313" selection-end="313" vertical-scroll-proportion="0.11612903">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/songrec/jobs/UserVectorGeneratorJob.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="11" selection-start="701" selection-end="701" vertical-scroll-proportion="0.30322582">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/songrec/jobs/AbstactJob.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="28" selection-start="204" selection-end="204" vertical-scroll-proportion="0.09677419">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/songrec/jobs/SortJob.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="48" selection-start="612" selection-end="612" vertical-scroll-proportion="0.29032257">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/songrec/jobs/ClusterUserJob.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="11" selection-start="590" selection-end="590" vertical-scroll-proportion="0.15483871">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/songrec/workflows/ClusterUserWorkflow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="53" selection-start="360" selection-end="360" vertical-scroll-proportion="0.15483871">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/songrec/utils/DataInputX.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="96" selection-end="96" vertical-scroll-proportion="0.077419356">
+        <state line="8" column="87" selection-start="256" selection-end="268" vertical-scroll-proportion="0.07968128">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/songrec/Counters.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="12" selection-start="34" selection-end="34" vertical-scroll-proportion="0.038709678">
+        <state line="3" column="46" selection-start="91" selection-end="91" vertical-scroll-proportion="0.058064517">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/songrec/workflows/ItemSimilarityWorkFlow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="41" selection-start="377" selection-end="377" vertical-scroll-proportion="0.13548388">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/songrec/jobs/AbstactJob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="22" selection-start="128" selection-end="128" vertical-scroll-proportion="0.077419356">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/songrec/workflows/WorkFlow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="28" selection-start="172" selection-end="172" vertical-scroll-proportion="0.09677419">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/songrec/jobs/GroupUsersByClusterJob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="11" selection-start="509" selection-end="509" vertical-scroll-proportion="0.27096775">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/songrec/mappers/ClusterIdGeneratorMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="0" selection-start="1472" selection-end="1472" vertical-scroll-proportion="0.55776894">
+          <folding>
+            <element signature="e#1727#1733#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/songrec/jobs/ClusterIdGeneratorJob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="41" selection-start="1282" selection-end="1282" vertical-scroll-proportion="0.63870966">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/songrec/workflows/ClusterUserWorkFlow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="53" selection-start="368" selection-end="368" vertical-scroll-proportion="0.17419355">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/songrec/mappers/UserVectorGeneratorMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="361" selection-end="361" vertical-scroll-proportion="0.09677419">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/songrec/jobs/UserVectorGeneratorJob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="46" selection-start="1208" selection-end="1208" vertical-scroll-proportion="0.516129">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/songrec/jobs/ItemSimilarityGeneratorJob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="42" selection-start="1281" selection-end="1281" vertical-scroll-proportion="0.44516128">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/songrec/mappers/ItemSimilarityMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="45" selection-start="741" selection-end="741" vertical-scroll-proportion="0.3483871">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

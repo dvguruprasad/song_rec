@@ -1,13 +1,13 @@
 package com.songrec.workflows;
 
-import com.songrec.jobs.ClusterUserJob;
-import com.songrec.jobs.UserVectorGeneratorJob;
+import com.songrec.jobs.ClusterIdGeneratorJob;
+import com.songrec.jobs.GroupUsersByClusterJob;
 
-public class ClusterUserWorkflow extends WorkFlow{
+public class ClusterUserWorkFlow extends WorkFlow {
     public static void main(String args[]) throws Exception {
         String inputPath = args[0];
-        String outputPath = args[0];
-        String userVectorPath = runJob(new UserVectorGeneratorJob(inputPath, outputPath));
-        runJob(new ClusterUserJob(userVectorPath, outputPath));
+        String outputPath = args[1];
+        String clusterIdsPath = runJob(new ClusterIdGeneratorJob(inputPath, outputPath));
+        runJob(new GroupUsersByClusterJob(clusterIdsPath, outputPath));
     }
 }
