@@ -13,11 +13,11 @@ public class PlayCountPair implements WritableComparable<PlayCountPair> {
     public PlayCountPair() {
     }
 
-    public long firstSongPlayCount() {
+    public short firstSongPlayCount() {
         return firstSongPlayCount;
     }
 
-    public long secondSongPlayCount() {
+    public short secondSongPlayCount() {
         return secondSongPlayCount;
     }
 
@@ -45,7 +45,7 @@ public class PlayCountPair implements WritableComparable<PlayCountPair> {
         return compare(secondSongPlayCount, playCountPair.secondSongPlayCount);
     }
 
-    private int compare(long a, long b) {
+    private int compare(short a, short b) {
         return a > b ? 1 : ((a < b)? -1 : 0);
     }
 
