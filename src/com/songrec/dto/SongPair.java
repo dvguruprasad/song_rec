@@ -1,7 +1,6 @@
 package com.songrec.dto;
 
-import com.google.common.hash.HashCode;
-import com.google.common.hash.Hashing;
+import com.songrec.utils.HashingX;
 import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
@@ -20,6 +19,14 @@ public class SongPair implements WritableComparable<SongPair> {
         this.secondSongId = secondSongId;
     }
 
+    public int firstSongId() {
+        return firstSongId;
+    }
+
+    public int secondSongId() {
+        return secondSongId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -35,8 +42,8 @@ public class SongPair implements WritableComparable<SongPair> {
 
     @Override
     public int hashCode() {
-        int result = sha1Hashcode(firstSongId).asInt();
-        result = 31 * result + sha1Hashcode(secondSongId).asInt();
+        int result = sha1Hashcode(firstSongId);
+        result = 31 * result + sha1Hashcode(secondSongId);
         return result;
     }
 
@@ -68,7 +75,7 @@ public class SongPair implements WritableComparable<SongPair> {
         return firstSongId + "," + secondSongId;
     }
 
-    private HashCode sha1Hashcode(int songId) {
-        return Hashing.sha1().newHasher().putInt(songId).hash();
+    private int sha1Hashcode(int songId) {
+        return HashingX.hash(songId);
     }
 }

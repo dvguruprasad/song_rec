@@ -1,7 +1,7 @@
 package com.songrec.mappers;
 
-import com.google.common.hash.Hashing;
 import com.songrec.dto.SongPlayCountPair;
+import com.songrec.utils.HashingX;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
@@ -10,10 +10,10 @@ import java.io.IOException;
 
 public class UserVectorGeneratorMapper extends Mapper<LongWritable, Text, Text, SongPlayCountPair> {
     @Override
-    protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-        String[] tokens = value.toString().split("\t");
+    protected void map(LongWritable key, Text triplet, Context context) throws IOException, InterruptedException {
+        String[] tokens = triplet.toString().split("\t");
         String userId = tokens[0];
-        int songId = Hashing.sha1().newHasher().putString(tokens[1]).hash().asInt();
+        int songId = HashingX.hash(tokens[1]);
         String playCount = tokens[2];
         context.write(new Text(userId), new SongPlayCountPair(songId, Short.valueOf(playCount)));
     }

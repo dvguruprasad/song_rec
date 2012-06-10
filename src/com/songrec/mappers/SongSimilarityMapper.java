@@ -10,7 +10,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
 
-public class ItemSimilarityMapper extends Mapper<Text, SongPlayCountPairs, SongPair, PlayCountPair> {
+public class SongSimilarityMapper extends Mapper<Text, SongPlayCountPairs, SongPair, PlayCountPair> {
     @Override
     protected void map(Text userId, SongPlayCountPairs songPlayCountpairs, Context context) throws IOException, InterruptedException {
         long then = System.nanoTime();

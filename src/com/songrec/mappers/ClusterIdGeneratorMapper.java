@@ -1,8 +1,6 @@
 package com.songrec.mappers;
 
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.songrec.Counters;
+import com.songrec.utils.HashingX;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
@@ -27,7 +25,7 @@ public class ClusterIdGeneratorMapper extends Mapper<LongWritable, Text, Text, L
         String userId = tokens[0];
         String songId = tokens[1];
 
-        long hashValue = hash(songId, Hashing.sha1()) + hash(songId, Hashing.goodFastHash(64));
+        long hashValue = HashingX.hash_sha1(songId) + HashingX.hash_goodFastHash(songId);
         addOrUpdate(userId, hashValue);
     }
 
@@ -58,31 +56,5 @@ public class ClusterIdGeneratorMapper extends Mapper<LongWritable, Text, Text, L
                 min = hash;
             }
         return min;
-    }
-
-    private long hash(String songId, HashFunction hashFunction) {
-        return 0x7FFFFFFF & hashFunction.newHasher().putString(songId).hash().asLong();
-    }
-
-    private String sha1MinHash(ArrayList<String> songIds) {
-        return String.valueOf(minHash(songIds, Hashing.sha1()));
-    }
-
-    private String md5MinHash(ArrayList<String> songIds) {
-        return String.valueOf(minHash(songIds, Hashing.md5()));
-    }
-
-    private String goodFastMinHash(ArrayList<String> songIds) {
-        return String.valueOf(minHash(songIds, Hashing.goodFastHash(64)));
-    }
-
-    private long minHash(ArrayList<String> songIds, HashFunction hashFunction) {
-        long minHash = Long.MAX_VALUE;
-        for (String songId : songIds) {
-            long hash = Math.abs(hashFunction.newHasher().putString(songId).hash().asLong());
-            if (hash < minHash)
-                minHash = hash;
-        }
-        return minHash;
     }
 }

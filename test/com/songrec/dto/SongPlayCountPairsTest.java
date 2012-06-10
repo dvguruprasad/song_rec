@@ -27,4 +27,11 @@ public class SongPlayCountPairsTest {
         Assert.assertEquals("song2", expectedPairTwo.songId());
         Assert.assertEquals((short) 8, expectedPairTwo.playCount());
     }
+    
+    @Test
+    public void foo() throws IOException {
+        FileOutputStream fileOutputStream = new FileOutputStream("/tmp/blah");
+        fileOutputStream.write(500);
+        fileOutputStream.close();
+    }
 }

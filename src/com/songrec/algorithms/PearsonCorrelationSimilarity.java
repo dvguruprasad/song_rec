@@ -3,7 +3,7 @@ package com.songrec.algorithms;
 import java.util.ArrayList;
 
 public class PearsonCorrelationSimilarity {
-    public static double score(ArrayList<Float> first, ArrayList<Float> second) {
+    public static double score(ArrayList<Short> first, ArrayList<Short> second) {
         int size = first.size();
 
         float sum1 = sum(first);
@@ -21,21 +21,21 @@ public class PearsonCorrelationSimilarity {
         return numerator / denominator;
     }
 
-    private static float sumOfProducts(ArrayList<Float> first, ArrayList<Float> second) {
+    private static float sumOfProducts(ArrayList<Short> first, ArrayList<Short> second) {
         float result = 0.0f;
         for(int index = 0; index < first.size(); index++)
             result += first.get(index) * second.get(index);
         return result;
     }
 
-    private static float sumOfSquares(ArrayList<Float> list) {
+    private static float sumOfSquares(ArrayList<Short> list) {
         float result = 0.0f;
         for (float item : list)
             result += item * item;
         return result;
     }
 
-    private static float sum(ArrayList<Float> list) {
+    private static float sum(ArrayList<Short> list) {
         float result = 0.0f;
         for (float item : list)
             result += item;

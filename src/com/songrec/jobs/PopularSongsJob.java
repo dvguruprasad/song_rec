@@ -11,7 +11,6 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.ToolRunner;
 
 public class PopularSongsJob extends AbstactJob {
-
     public static void main(String[] args) throws Exception {
         int res = ToolRunner.run(new PopularSongsJob(), args);
         System.exit(res);
