@@ -6,8 +6,11 @@ import com.songrec.jobs.UserVectorGeneratorJob;
 
 public class SongSimilarityWorkFlow extends WorkFlow {
     public static void main(String args[]) throws Exception {
-        runJob(new SongIdHashJob(args[0], args[1]));
-        String userVectorPath = runJob(new UserVectorGeneratorJob(args[0], args[1]));
-        runJob(new SongSimilarityGeneratorJob(userVectorPath, args[1]));
+        String baseInputPath = args[0];
+        String baseOutputPath = args[1];
+
+        runJob(new SongIdHashJob(baseInputPath, baseOutputPath));
+        String userVectorPath = runJob(new UserVectorGeneratorJob(baseInputPath, baseOutputPath));
+        runJob(new SongSimilarityGeneratorJob(userVectorPath, baseOutputPath));
     }
 }

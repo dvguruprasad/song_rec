@@ -7,7 +7,7 @@ public abstract class WorkFlow {
     protected static String runJob(AbstactJob job) throws Exception {
         int res = ToolRunner.run(job, new String[]{});
         if(res != 0)
-            throw new Exception("Failed running " + job.getClass().getSimpleName());
-        return "/u/guru/mr-output" + "/" + job.getClass().getSimpleName();
+            throw new Exception("Failed running " + job.name());
+        return job.outputPath();
     }
 }

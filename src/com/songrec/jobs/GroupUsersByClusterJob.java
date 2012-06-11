@@ -2,28 +2,20 @@ package com.songrec.jobs;
 
 import com.songrec.mappers.GroupUsersByClusterMapper;
 import com.songrec.reducers.GroupUsersByClusterReducer;
-import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.KeyValueTextInputFormat;
-import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-public class GroupUsersByClusterJob extends AbstactJob{
-    private String inputPath;
-    private String outputPath;
+import java.io.IOException;
 
+public class GroupUsersByClusterJob extends AbstactJob {
     public GroupUsersByClusterJob(String inputPath, String outputPath) {
-        this.inputPath = inputPath;
-        this.outputPath = outputPathForJob(GroupUsersByClusterJob.class.getSimpleName(), outputPath);
+        super(inputPath, outputPath);
     }
 
     @Override
-    public int run(String[] strings) throws Exception {
-
-        Job job = new Job(getConf(), "GroupUsersByClusterJob");
-
+    public void prepare(Job job) throws IOException {
         KeyValueTextInputFormat.setInputPaths(job, inputPath);
-        FileOutputFormat.setOutputPath(job, new Path(outputPath));
 
         job.setInputFormatClass(KeyValueTextInputFormat.class);
 
@@ -34,8 +26,5 @@ public class GroupUsersByClusterJob extends AbstactJob{
         job.setReducerClass(GroupUsersByClusterReducer.class);
 
         job.setNumReduceTasks(10);
-
-        job.setJarByClass(GroupUsersByClusterJob.class);
-        return job.waitForCompletion(true) ? 0 : 1;
     }
 }

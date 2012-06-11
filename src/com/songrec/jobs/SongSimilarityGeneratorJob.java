@@ -5,31 +5,21 @@ import com.songrec.dto.PlayCountPair;
 import com.songrec.dto.SongPair;
 import com.songrec.mappers.SongSimilarityMapper;
 import com.songrec.reducers.SongSimilarityReducer;
-import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
-import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
-import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.ToolRunner;
 
-public class SongSimilarityGeneratorJob extends AbstactJob {
-    private String inputPath;
-    private String outputPath;
+import java.io.IOException;
 
+public class SongSimilarityGeneratorJob extends AbstactJob {
     public SongSimilarityGeneratorJob(String inputPath, String outputPath) {
-        this.inputPath = inputPath;
-        this.outputPath = outputPathForJob(SongSimilarityGeneratorJob.class.getSimpleName(), outputPath);
+        super(inputPath, outputPath);
     }
 
     @Override
-    public int run(String[] strings) throws Exception {
-        Job job = new Job(getConf(), "ItemSimilarityGenerator");
-
-        FileInputFormat.setInputPaths(job, new Path(inputPath));
-        FileOutputFormat.setOutputPath(job, new Path(outputPath));
-
+    public void prepare(Job job) throws IOException {
         job.setInputFormatClass(SequenceFileInputFormat.class);
 
         job.setMapperClass(SongSimilarityMapper.class);
@@ -41,8 +31,6 @@ public class SongSimilarityGeneratorJob extends AbstactJob {
         job.setOutputValueClass(DoubleWritable.class);
 
         job.setNumReduceTasks(10);
-        job.setJarByClass(SongSimilarityGeneratorJob.class);
-        return job.waitForCompletion(true) ? 0 : 1;
     }
 
     public static void main(String args[]) throws Exception {

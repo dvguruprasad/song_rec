@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class SongPlayCountPairsTest {
@@ -29,9 +30,8 @@ public class SongPlayCountPairsTest {
     }
     
     @Test
-    public void foo() throws IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream("/tmp/blah");
-        fileOutputStream.write(500);
-        fileOutputStream.close();
+    public void foo() throws IOException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
+        Class<?> userVectorGeneratorJob = Class.forName("com.songrec.jobs.UserVectorGeneratorJob");
+        userVectorGeneratorJob.getConstructor(String.class, String.class).newInstance("", "");
     }
 }
