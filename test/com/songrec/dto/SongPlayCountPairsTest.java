@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.*;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class SongPlayCountPairsTest {
@@ -27,11 +26,5 @@ public class SongPlayCountPairsTest {
         SongPlayCountPair expectedPairTwo = deserializedPairs.get(1);
         Assert.assertEquals("song2", expectedPairTwo.songId());
         Assert.assertEquals((short) 8, expectedPairTwo.playCount());
-    }
-    
-    @Test
-    public void foo() throws IOException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
-        Class<?> userVectorGeneratorJob = Class.forName("com.songrec.jobs.UserVectorGeneratorJob");
-        userVectorGeneratorJob.getConstructor(String.class, String.class).newInstance("", "");
     }
 }

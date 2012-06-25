@@ -2,41 +2,69 @@ package com.songrec.reducers;
 
 import com.songrec.algorithms.PearsonCorrelationSimilarity;
 import com.songrec.dto.PlayCountPair;
-import com.songrec.dto.SongPair;
-import com.songrec.utils.FileUtils;
-import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.DoubleWritable;
-import org.apache.hadoop.io.Text;
+import com.songrec.dto.PlayCountPairsMap;
+import com.songrec.dto.SongSimilarityScores;
+import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.*;
 
-public class SongSimilarityReducer extends Reducer<SongPair, PlayCountPair, Text, DoubleWritable> {
-    private static Map<Integer,String> itemIdToHashMap;
-    @Override
+public class SongSimilarityReducer extends Reducer<IntWritable, PlayCountPairsMap, IntWritable, SongSimilarityScores> {
 
-    protected void setup(Context context) throws IOException, InterruptedException {
-        itemIdToHashMap = FileUtils.getItemIdToHashMap(new Path("/u/guru/mr-output/SongIdHashJob"), context.getConfiguration());
-    }
+    public static final int SIMILARITY_SCORE_THRESHOLD = 0;
+    public static final int MINIMUM_NUMBER_OF_PLAYCOUNTS = 3;
 
     @Override
-    protected void reduce(SongPair songPair, Iterable<PlayCountPair> playCountVectors, Context context) throws IOException, InterruptedException {
-        long then = System.nanoTime();
-        ArrayList<Short> firstItemVector = new ArrayList<Short>();
-        ArrayList<Short> secondItemVector = new ArrayList<Short>();
-        for(PlayCountPair pair : playCountVectors){
-            firstItemVector.add(pair.firstSongPlayCount());
-            secondItemVector.add(pair.secondSongPlayCount());
+    protected void reduce(IntWritable songId, Iterable<PlayCountPairsMap> playCountVectors, Context context) throws IOException, InterruptedException {
+
+        int counter = 0;
+        int relatedNumberOfSongs = 0;
+        Iterator<PlayCountPairsMap> iterator = playCountVectors.iterator();
+        HashMap<Integer, List<PlayCountPair>> map = new HashMap<Integer, List<PlayCountPair>>();
+
+        while (iterator.hasNext()) {
+            counter++;
+            PlayCountPairsMap playCountVector = iterator.next();
+            for (Map.Entry<Integer, List<PlayCountPair>> entry : playCountVector.entrySet()) {
+                if (map.containsKey(entry.getKey())) {
+                    map.get(entry.getKey()).addAll(entry.getValue());
+                } else {
+                    map.put(entry.getKey(), entry.getValue());
+                }
+                System.out.println("[map " + counter + "] song related to " + songId.get() + " => " + entry.getKey());
+            }
+            relatedNumberOfSongs += playCountVector.size();
+        }
+        PlayCountPairsMap aggregatedMap = new PlayCountPairsMap(map);
+        System.out.println("Number of related songs in aggregated map for song id " + songId + "= " + aggregatedMap.size());
+        System.out.println("Number of Playcount PairMaps for song + " + songId + "= " + counter);
+        System.out.println("Number of songs related to " + songId + " => " + relatedNumberOfSongs);
+
+        SongSimilarityScores similarityScores = new SongSimilarityScores();
+
+        for (Map.Entry<Integer, List<PlayCountPair>> playCountVector : aggregatedMap.entrySet()) {
+            if (playCountVector.getValue().size() < MINIMUM_NUMBER_OF_PLAYCOUNTS)
+                continue;
+
+            double similarityScore = similarityScore(playCountVector.getValue());
+            if (similarityScore > SIMILARITY_SCORE_THRESHOLD)
+                similarityScores.put(playCountVector.getKey(), similarityScore);
         }
 
-        if(firstItemVector.size() < 3)
-            return;
+        if (!similarityScores.isEmpty())
+            context.write(songId, similarityScores);
+    }
 
-        double similarityScore = PearsonCorrelationSimilarity.score(firstItemVector, secondItemVector);
-        String songPairText = itemIdToHashMap.get(songPair.firstSongId()) + "," + itemIdToHashMap.get(songPair.secondSongId());
-        context.write(new Text(songPairText), new DoubleWritable(similarityScore));
-        context.getCounter(com.songrec.Counters.TIME_SPENT_IN_COMPUTAION_OF_SIMILARITIES).increment(System.nanoTime() - then);
+    private double similarityScore(List<PlayCountPair> playCountPairs) {
+        ArrayList<Short> firstSongPlayCounts = new ArrayList<Short>();
+        ArrayList<Short> secondSongPlayCounts = new ArrayList<Short>();
+        for (int i = 0; i < playCountPairs.size(); i++) {
+            PlayCountPair pair = playCountPairs.get(i);
+            firstSongPlayCounts.add(pair.firstSongPlayCount());
+            secondSongPlayCounts.add(pair.secondSongPlayCount());
+
+        }
+        return PearsonCorrelationSimilarity.score(firstSongPlayCounts, secondSongPlayCounts);
     }
 }

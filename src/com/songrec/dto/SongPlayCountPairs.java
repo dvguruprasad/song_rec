@@ -7,6 +7,7 @@ import java.io.DataOutput;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class SongPlayCountPairs implements Writable, Iterable<SongPlayCountPair> {
     private ArrayList<SongPlayCountPair> pairs;
@@ -14,11 +15,8 @@ public class SongPlayCountPairs implements Writable, Iterable<SongPlayCountPair>
     public SongPlayCountPairs() {
     }
 
-    public SongPlayCountPairs(Iterable<SongPlayCountPair> songPlayCountPairs) {
-        pairs = new ArrayList<SongPlayCountPair>();
-        for(SongPlayCountPair pair : songPlayCountPairs){
-            pairs.add(new SongPlayCountPair(pair.songId(), pair.playCount()));
-        }
+    public SongPlayCountPairs(ArrayList<SongPlayCountPair> songPlayCountPairs) {
+        this.pairs = songPlayCountPairs;
     }
 
     @Override

@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class PopularSongsJob extends AbstactJob {
     public PopularSongsJob(String inputPath, String outputPath) {
-        super(inputPath, outputPath);
+        super(outputPath, inputPath);
     }
 
     public static void main(String[] args) throws Exception {

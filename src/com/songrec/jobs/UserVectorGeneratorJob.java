@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class UserVectorGeneratorJob extends AbstactJob {
     public UserVectorGeneratorJob(String inputPath, String outputPath) {
-        super(inputPath, outputPath);
+        super(outputPath, inputPath);
     }
 
     @Override
@@ -25,7 +25,6 @@ public class UserVectorGeneratorJob extends AbstactJob {
         job.setReducerClass(UserVectorGeneratorReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(SongPlayCountPairs.class);
-
         job.setNumReduceTasks(10);
         job.setOutputFormatClass(SequenceFileOutputFormat.class);
     }

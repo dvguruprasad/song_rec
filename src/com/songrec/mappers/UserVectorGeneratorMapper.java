@@ -13,8 +13,10 @@ public class UserVectorGeneratorMapper extends Mapper<LongWritable, Text, Text, 
     protected void map(LongWritable key, Text triplet, Context context) throws IOException, InterruptedException {
         String[] tokens = triplet.toString().split("\t");
         String userId = tokens[0];
+        Short playCount = Short.valueOf(tokens[2]);
+        if (playCount < 10)
+            return;
         int songId = HashingX.hash(tokens[1]);
-        String playCount = tokens[2];
-        context.write(new Text(userId), new SongPlayCountPair(songId, Short.valueOf(playCount)));
+        context.write(new Text(userId), new SongPlayCountPair(songId, playCount));
     }
 }

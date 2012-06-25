@@ -15,9 +15,12 @@ import java.util.Map;
 public class FileUtils {
 
     private static final PartFileFilter filter = new PartFileFilter();
+    private static Map<Integer, String> map;
 
     public static Map<Integer, String> getItemIdToHashMap(Path itemIdHashFilesPath, Configuration configuration) throws IOException {
-        HashMap<Integer, String> map = new HashMap<Integer, String>();
+        if(null != map) return map;
+
+        map = new HashMap<Integer, String>();
         FileSystem fileSystem = itemIdHashFilesPath.getFileSystem(configuration);
         FileStatus[] fss = fileSystem.listStatus(itemIdHashFilesPath, filter);
         for (FileStatus status : fss) {

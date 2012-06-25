@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class SortJob extends AbstactJob {
     public SortJob(String inputPath, String outputPath) {
-        super(inputPath, outputPath);
+        super(outputPath, inputPath);
     }
 
     @Override

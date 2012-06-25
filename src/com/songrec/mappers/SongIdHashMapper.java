@@ -11,11 +11,7 @@ import java.io.IOException;
 public class SongIdHashMapper extends Mapper<LongWritable, Text, IntWritable, Text> {
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-        try{
-            String songId = value.toString().split("\t")[1];
-            context.write(new IntWritable(HashingX.hash(songId)), new Text(songId));
-        }catch(ArrayIndexOutOfBoundsException exception){
-            throw new ArrayIndexOutOfBoundsException(value.toString());
-        }
+        String songId = value.toString().split("\t")[1];
+        context.write(new IntWritable(HashingX.hash(songId)), new Text(songId));
     }
 }

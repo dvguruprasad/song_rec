@@ -1,6 +1,5 @@
 package com.songrec.workflows;
 
-import com.songrec.jobs.SongIdHashJob;
 import com.songrec.jobs.SongSimilarityGeneratorJob;
 import com.songrec.jobs.UserVectorGeneratorJob;
 
@@ -9,8 +8,8 @@ public class SongSimilarityWorkFlow extends WorkFlow {
         String baseInputPath = args[0];
         String baseOutputPath = args[1];
 
-        runJob(new SongIdHashJob(baseInputPath, baseOutputPath));
+//        String songIdHashPath = runJob(new SongIdHashJob(baseInputPath, baseOutputPath));
         String userVectorPath = runJob(new UserVectorGeneratorJob(baseInputPath, baseOutputPath));
-        runJob(new SongSimilarityGeneratorJob(userVectorPath, baseOutputPath));
+        runJob(new SongSimilarityGeneratorJob(userVectorPath, "", baseOutputPath));
     }
 }

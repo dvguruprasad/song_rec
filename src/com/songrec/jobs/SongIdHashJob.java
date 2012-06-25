@@ -11,8 +11,10 @@ import org.apache.hadoop.util.ToolRunner;
 import java.io.IOException;
 
 public class SongIdHashJob extends AbstactJob {
+    public static final String SONG_ID_HASH_PATH = "songIdHashPath";
+
     public SongIdHashJob(String inputPath, String outputPath) {
-        super(inputPath, outputPath);
+        super(outputPath, inputPath);
     }
 
     @Override

@@ -29,6 +29,8 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="junit-4.11" level="project" />
+    <orderEntry type="library" name="mockito-all-1.9.5-rc1" level="project" />
+    <orderEntry type="library" name="commons-logging-1.1.1" level="project" />
   </component>
 </module>
 

@@ -10,12 +10,12 @@ import java.io.IOException;
 
 public class GroupUsersByClusterJob extends AbstactJob {
     public GroupUsersByClusterJob(String inputPath, String outputPath) {
-        super(inputPath, outputPath);
+        super(outputPath, inputPath);
     }
 
     @Override
     public void prepare(Job job) throws IOException {
-        KeyValueTextInputFormat.setInputPaths(job, inputPath);
+        KeyValueTextInputFormat.setInputPaths(job, inputPaths[0]);
 
         job.setInputFormatClass(KeyValueTextInputFormat.class);
 

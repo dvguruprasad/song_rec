@@ -12,7 +12,7 @@ import java.io.IOException;
 public class ClusterIdGeneratorJob extends AbstactJob {
 
     public ClusterIdGeneratorJob(String inputPath, String outputPath) {
-        super(inputPath, outputPath);
+        super(outputPath, inputPath);
     }
 
     public static void main(String args[]) throws Exception {

@@ -100,6 +100,9 @@
     <path id="library.junit.classpath">
         <pathelement location="${basedir}/lib/junit-4.11.jar"/>
     </path>
+    <path id="library.mockito.classpath">
+        <pathelement location="${basedir}/lib/mockito-all-1.9.5-rc1.jar"/>
+    </path>
 
   <!-- Modules -->
 
@@ -138,6 +141,7 @@
     <pathelement location="${song_rec.output.dir}"/>
     <path refid="library.hadoop-core-1.0.3.classpath"/>
     <path refid="library.junit.classpath"/>
+    <path refid="library.mockito.classpath"/>
   </path>
   
   <path id="song_rec.runtime.module.classpath">

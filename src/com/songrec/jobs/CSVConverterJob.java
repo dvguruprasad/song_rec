@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class CSVConverterJob extends AbstactJob {
     public CSVConverterJob(String inputPath, String outputPath) {
-        super(inputPath, outputPath);
+        super(outputPath, inputPath);
     }
 
     @Override
