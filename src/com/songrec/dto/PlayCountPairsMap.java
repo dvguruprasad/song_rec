@@ -1,11 +1,13 @@
 package com.songrec.dto;
 
+import org.apache.hadoop.io.Writable;
+
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 import java.util.*;
 
-public class PlayCountPairsMap extends SongVector {
+public class PlayCountPairsMap implements Writable{
     HashMap<Integer, List<PlayCountPair>> map;
 
     public PlayCountPairsMap() {

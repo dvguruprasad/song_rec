@@ -19,10 +19,10 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 
-public class SongSimilarityMapperTest {
+public class SongSimilarityGeneratorMapperTest {
     @Test
     public void generatesASongVectorForEverySongUserHasListenedTo() throws IOException, InterruptedException {
-        SongSimilarityMapper mapper = new SongSimilarityMapper();
+        SongSimilarityGeneratorMapper mapper = new SongSimilarityGeneratorMapper();
         Mapper.Context mockContext = mock(Mapper.Context.class);
 
         ArrayList<SongPlayCountPair> list = new ArrayList<SongPlayCountPair>();

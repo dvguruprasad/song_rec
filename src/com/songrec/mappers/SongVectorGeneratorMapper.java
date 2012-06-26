@@ -2,6 +2,7 @@ package com.songrec.mappers;
 
 import com.songrec.dto.UserPlayCountPair;
 import com.songrec.utils.HashingX;
+import com.songrec.workflows.Thresholds;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -15,7 +16,7 @@ public class SongVectorGeneratorMapper extends Mapper<LongWritable, Text, IntWri
         String[] tokens = value.toString().split("\\s+");
         short playCount = Short.valueOf(tokens[2]);
 
-        if (playCount < 3)
+        if (playCount < Thresholds.MINIMUM_PLAYCOUNT)
             return;
 
         int userId = HashingX.hash(tokens[0]);

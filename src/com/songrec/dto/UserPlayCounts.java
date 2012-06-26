@@ -8,15 +8,24 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
-public class UserPlayCounts extends SongVector {
-    private final HashMap<Integer, Short> map;
+public class UserPlayCounts implements Writable{
+    private HashMap<Integer, Short> map;
+
+    public UserPlayCounts() {
+        map = new HashMap<Integer, Short>();
+    }
 
     public UserPlayCounts(List<UserPlayCountPair> list) {
         map = new HashMap<Integer, Short>();
         for (UserPlayCountPair pair : list) {
             map.put(pair.userId(), pair.playCount());
         }
+    }
+
+    public UserPlayCounts(UserPlayCounts playCounts) {
+        this.map = playCounts.map;
     }
 
     @Override
@@ -46,11 +55,15 @@ public class UserPlayCounts extends SongVector {
         return result;
     }
 
-    public HashMap<Integer, Short> getMap() {
-        return map;
-    }
-
     public int size() {
         return map.size();
+    }
+
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+    
+    public Set<Map.Entry<Integer, Short>> entrySet(){
+        return map.entrySet();
     }
 }

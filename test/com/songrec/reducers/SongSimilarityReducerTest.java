@@ -3,7 +3,8 @@ package com.songrec.reducers;
 import com.songrec.Counters;
 import com.songrec.dto.PlayCountPair;
 import com.songrec.dto.PlayCountPairsMap;
-import com.songrec.dto.SongSimilarityScores;
+import com.songrec.dto.SimilarityScore;
+import com.songrec.dto.SimilarityScores;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.mapreduce.Counter;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -19,7 +20,7 @@ import static org.mockito.Mockito.*;
 public class SongSimilarityReducerTest {
     @Test
     public void shouldGenerateSimilarityVectorForGivenSong() throws IOException, InterruptedException {
-        SongSimilarityReducer reducer = new SongSimilarityReducer();
+        SongSimilarityGeneratorReducer reducer = new SongSimilarityGeneratorReducer();
         Reducer.Context mockContext = mock(Reducer.Context.class);
         when(mockContext.getCounter(Counters.TIME_SPENT_IN_COMPUTAION_OF_SIMILARITIES)).thenReturn(mock(Counter.class));
         ArrayList<PlayCountPairsMap> playCountVectors = new ArrayList<PlayCountPairsMap>();
@@ -31,10 +32,10 @@ public class SongSimilarityReducerTest {
         verify(mockContext).write(songId, expectedSimilarityScoresVector());
     }
 
-    private SongSimilarityScores expectedSimilarityScoresVector() {
-        SongSimilarityScores vector = new SongSimilarityScores();
-        vector.put(20, 0.7321617151746577);
-        vector.put(30, 0.8737200675525434);
+    private SimilarityScores expectedSimilarityScoresVector() {
+        SimilarityScores vector = new SimilarityScores();
+        vector.add(new SimilarityScore(20, 0.7321617151746577));
+        vector.add(new SimilarityScore(30, 0.8737200675525434));
         return vector;
     }
 
