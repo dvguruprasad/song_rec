@@ -1,6 +1,6 @@
 package com.songrec.jobs;
 
-import com.songrec.dto.SongVector;
+import com.songrec.dto.SongVectorAndSimilarityScores;
 import com.songrec.dto.UserPlayCountPair;
 import com.songrec.mappers.SongVectorGeneratorMapper;
 import com.songrec.reducers.SongVectorGeneratorReducer;
@@ -11,8 +11,8 @@ import org.apache.hadoop.util.ToolRunner;
 
 import java.io.IOException;
 
-public class Song_UserVectorGeneratorJob extends AbstactJob {
-    public Song_UserVectorGeneratorJob(String inputPath, String outputPath) {
+public class SongVectorGeneratorJob extends AbstactJob {
+    public SongVectorGeneratorJob(String inputPath, String outputPath) {
         super(outputPath, inputPath);
     }
 
@@ -24,13 +24,13 @@ public class Song_UserVectorGeneratorJob extends AbstactJob {
 
         job.setReducerClass(SongVectorGeneratorReducer.class);
         job.setOutputKeyClass(IntWritable.class);
-        job.setOutputValueClass(SongVector.class);
+        job.setOutputValueClass(SongVectorAndSimilarityScores.class);
 
         job.setOutputFormatClass(SequenceFileOutputFormat.class);
     }
 
     public static void main(String args[]) throws Exception {
-        int res = ToolRunner.run(new Song_UserVectorGeneratorJob(args[0], args[1]), args);
+        int res = ToolRunner.run(new SongVectorGeneratorJob(args[0], args[1]), args);
         System.exit(res);
     }
 }
