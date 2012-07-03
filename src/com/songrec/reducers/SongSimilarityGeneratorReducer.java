@@ -14,7 +14,7 @@ public class SongSimilarityGeneratorReducer extends Reducer<IntWritable, PlayCou
     @Override
     protected void reduce(IntWritable songId, Iterable<PlayCountPairsMap> playCountVectors, Context context) throws IOException, InterruptedException {
         Iterator<PlayCountPairsMap> iterator = playCountVectors.iterator();
-        PlayCountPairsMap aggregatedMap = new PlayCountPairsMap(mergeMaps(iterator));
+        PlayCountPairsMap aggregatedMap = PlayCountPairsMap.merge(iterator);
         BoundedPriorityQueue<SimilarityScore> topSimilarityScores = new BoundedPriorityQueue<SimilarityScore>(10);
 
         for (Map.Entry<Integer, List<PlayCountPair>> entry : aggregatedMap.entrySet()) {
@@ -30,22 +30,6 @@ public class SongSimilarityGeneratorReducer extends Reducer<IntWritable, PlayCou
         if (!result.isEmpty()) {
             context.write(songId, new SongVectorOrSimilarityScores(new SimilarityScores(result)));
         }
-    }
-
-    private HashMap<Integer, List<PlayCountPair>> mergeMaps(Iterator<PlayCountPairsMap> iterator) {
-        HashMap<Integer, List<PlayCountPair>> map = new HashMap<Integer, List<PlayCountPair>>();
-
-        while (iterator.hasNext()) {
-            PlayCountPairsMap playCountVector = iterator.next();
-            for (Map.Entry<Integer, List<PlayCountPair>> entry : playCountVector.entrySet()) {
-                if (map.containsKey(entry.getKey())) {
-                    map.get(entry.getKey()).addAll(entry.getValue());
-                } else {
-                    map.put(entry.getKey(), entry.getValue());
-                }
-            }
-        }
-        return map;
     }
 
     private double similarityScore(List<PlayCountPair> playCountPairs) {

@@ -17,7 +17,7 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 
-public class SongSimilarityReducerTest {
+public class SongSimilarityGeneratorReducerTest {
     @Test
     public void shouldGenerateSimilarityVectorForGivenSong() throws IOException, InterruptedException {
         SongSimilarityGeneratorReducer reducer = new SongSimilarityGeneratorReducer();

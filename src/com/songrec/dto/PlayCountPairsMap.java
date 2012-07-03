@@ -123,4 +123,20 @@ public class PlayCountPairsMap implements Writable{
     public HashMap<Integer, List<PlayCountPair>> getMap() {
         return map;
     }
+
+    public static PlayCountPairsMap merge(Iterator<PlayCountPairsMap> iterator) {
+        HashMap<Integer, List<PlayCountPair>> map = new HashMap<Integer, List<PlayCountPair>>();
+
+        while (iterator.hasNext()) {
+            PlayCountPairsMap playCountVector = iterator.next();
+            for (Map.Entry<Integer, List<PlayCountPair>> entry : playCountVector.entrySet()) {
+                if (map.containsKey(entry.getKey())) {
+                    map.get(entry.getKey()).addAll(entry.getValue());
+                } else {
+                    map.put(entry.getKey(), entry.getValue());
+                }
+            }
+        }
+        return new PlayCountPairsMap(map);
+    }
 }
