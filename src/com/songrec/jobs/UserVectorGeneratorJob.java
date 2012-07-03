@@ -1,7 +1,7 @@
 package com.songrec.jobs;
 
-import com.songrec.dto.SongPlayCountPair;
-import com.songrec.dto.SongPlayCountPairs;
+import com.songrec.dto.SongPlayCount;
+import com.songrec.dto.SongPlayCounts;
 import com.songrec.mappers.UserVectorGeneratorMapper;
 import com.songrec.reducers.UserVectorGeneratorReducer;
 import org.apache.hadoop.io.Text;
@@ -20,12 +20,11 @@ public class UserVectorGeneratorJob extends AbstactJob {
     public void prepare(Job job) throws IOException {
         job.setMapperClass(UserVectorGeneratorMapper.class);
         job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(SongPlayCountPair.class);
+        job.setMapOutputValueClass(SongPlayCount.class);
 
         job.setReducerClass(UserVectorGeneratorReducer.class);
         job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(SongPlayCountPairs.class);
-        job.setNumReduceTasks(10);
+        job.setOutputValueClass(SongPlayCounts.class);
         job.setOutputFormatClass(SequenceFileOutputFormat.class);
     }
 

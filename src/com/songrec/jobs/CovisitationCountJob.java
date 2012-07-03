@@ -31,8 +31,6 @@ public class CovisitationCountJob extends AbstactJob {
         job.setOutputValueClass(IntWritable.class);
 
         job.getConfiguration().set(SongIdHashJob.SONG_ID_HASH_PATH, songIdHashOutputPath);
-
-        job.setNumReduceTasks(10);
     }
 
     public static void main(String args[]) throws Exception {

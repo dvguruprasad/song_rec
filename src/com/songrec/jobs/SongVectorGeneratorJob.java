@@ -1,7 +1,7 @@
 package com.songrec.jobs;
 
 import com.songrec.dto.SongVectorOrSimilarityScores;
-import com.songrec.dto.UserPlayCountPair;
+import com.songrec.dto.UserPlayCount;
 import com.songrec.mappers.SongVectorGeneratorMapper;
 import com.songrec.reducers.SongVectorGeneratorReducer;
 import org.apache.hadoop.io.IntWritable;
@@ -20,7 +20,7 @@ public class SongVectorGeneratorJob extends AbstactJob {
     public void prepare(Job job) throws IOException {
         job.setMapperClass(SongVectorGeneratorMapper.class);
         job.setMapOutputKeyClass(IntWritable.class);
-        job.setMapOutputValueClass(UserPlayCountPair.class);
+        job.setMapOutputValueClass(UserPlayCount.class);
 
         job.setReducerClass(SongVectorGeneratorReducer.class);
         job.setOutputKeyClass(IntWritable.class);

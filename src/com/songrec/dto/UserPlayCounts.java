@@ -17,9 +17,9 @@ public class UserPlayCounts implements Writable{
         map = new HashMap<Integer, Short>();
     }
 
-    public UserPlayCounts(List<UserPlayCountPair> list) {
+    public UserPlayCounts(List<UserPlayCount> list) {
         map = new HashMap<Integer, Short>();
-        for (UserPlayCountPair pair : list) {
+        for (UserPlayCount pair : list) {
             map.put(pair.userId(), pair.playCount());
         }
     }

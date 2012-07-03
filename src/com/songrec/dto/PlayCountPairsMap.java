@@ -56,7 +56,7 @@ public class PlayCountPairsMap implements Writable{
         return list;
     }
 
-    public void add(SongPlayCountPair firstSong, SongPlayCountPair secondSong) {
+    public void addOrUpdate(SongPlayCount firstSong, SongPlayCount secondSong) {
         if (map.containsKey(secondSong.songId())) {
             List<PlayCountPair> playCountPairs = map.get(secondSong.songId());
             if(playCountPairs.size() < 10)

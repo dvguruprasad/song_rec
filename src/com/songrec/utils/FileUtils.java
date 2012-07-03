@@ -15,21 +15,30 @@ import java.util.Map;
 public class FileUtils {
 
     private static final PartFileFilter filter = new PartFileFilter();
-    private static Map<Integer, String> map;
+    private static Map<Integer, String> songIdHashMap;
+    private static Map<Integer, String> userIdHashMap;
 
-    public static Map<Integer, String> getItemIdToHashMap(Path itemIdHashFilesPath, Configuration configuration) throws IOException {
-        if(null != map) return map;
+    public static Map<Integer, String> songIdHashMap(Path hashFilePath, Configuration configuration) throws IOException {
+        if(null != songIdHashMap) return songIdHashMap;
+        return create(hashFilePath, configuration);
+    }
 
-        map = new HashMap<Integer, String>();
-        FileSystem fileSystem = itemIdHashFilesPath.getFileSystem(configuration);
-        FileStatus[] fss = fileSystem.listStatus(itemIdHashFilesPath, filter);
+    public static Map<Integer, String> userIdHashMap(Path hashFilePath, Configuration configuration) throws IOException {
+        if(null != userIdHashMap) return userIdHashMap;
+        return create(hashFilePath, configuration);
+    }
+
+    private static Map<Integer, String> create(Path hashFilePath, Configuration configuration) throws IOException {
+        HashMap<Integer, String> map = new HashMap<Integer, String>();
+        FileSystem fileSystem = hashFilePath.getFileSystem(configuration);
+        FileStatus[] fss = fileSystem.listStatus(hashFilePath, filter);
         for (FileStatus status : fss) {
             Path path = status.getPath();
             SequenceFile.Reader reader = new SequenceFile.Reader(fileSystem, path, configuration);
             IntWritable key = new IntWritable();
             Text value = new Text();
             while (reader.next(key, value)) {
-                map.put(key.get(),  value.toString());
+                map.put(key.get(), value.toString());
             }
             reader.close();
         }

@@ -6,14 +6,14 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class SongPlayCountPair implements WritableComparable<SongPlayCountPair> {
+public class SongPlayCount implements WritableComparable<SongPlayCount> {
     private int songId;
     private short playCount;
 
-    public SongPlayCountPair() {
+    public SongPlayCount() {
     }
 
-    public SongPlayCountPair(int songId, short playCount) {
+    public SongPlayCount(int songId, short playCount) {
         this.songId = songId;
         this.playCount = playCount;
     }
@@ -44,9 +44,9 @@ public class SongPlayCountPair implements WritableComparable<SongPlayCountPair> 
     }
 
     @Override
-    public int compareTo(SongPlayCountPair songPlayCountPair) {
-        int result = songId > songPlayCountPair.songId() ? 1 : (songId < songPlayCountPair.songId() ? -1 : 0);
+    public int compareTo(SongPlayCount songPlayCount) {
+        int result = songId > songPlayCount.songId() ? 1 : (songId < songPlayCount.songId() ? -1 : 0);
         if (result != 0) return result;
-        return playCount > songPlayCountPair.playCount() ? 1 : (playCount < songPlayCountPair.playCount() ? -1 : 0);
+        return playCount > songPlayCount.playCount() ? 1 : (playCount < songPlayCount.playCount() ? -1 : 0);
     }
 }

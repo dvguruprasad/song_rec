@@ -35,8 +35,6 @@ public class SongSimilarityGeneratorJob extends AbstactJob {
 
         job.setOutputFormatClass(SequenceFileOutputFormat.class);
         job.getConfiguration().set(SongIdHashJob.SONG_ID_HASH_PATH, songIdHashPath);
-
-        job.setNumReduceTasks(10);
     }
 
     public static void main(String args[]) throws Exception {

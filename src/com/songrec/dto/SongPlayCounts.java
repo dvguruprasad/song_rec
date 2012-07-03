@@ -7,22 +7,21 @@ import java.io.DataOutput;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
-public class SongPlayCountPairs implements Writable, Iterable<SongPlayCountPair> {
-    private ArrayList<SongPlayCountPair> pairs;
+public class SongPlayCounts implements Writable, Iterable<SongPlayCount> {
+    private ArrayList<SongPlayCount> pairs;
 
-    public SongPlayCountPairs() {
+    public SongPlayCounts() {
     }
 
-    public SongPlayCountPairs(ArrayList<SongPlayCountPair> songPlayCountPairs) {
-        this.pairs = songPlayCountPairs;
+    public SongPlayCounts(ArrayList<SongPlayCount> songPlayCounts) {
+        this.pairs = songPlayCounts;
     }
 
     @Override
     public void write(DataOutput out) throws IOException {
         out.writeInt(pairs.size());
-        for(SongPlayCountPair pair : pairs){
+        for(SongPlayCount pair : pairs){
             out.writeInt(pair.songId());
             out.writeShort(pair.playCount());
         }
@@ -31,14 +30,14 @@ public class SongPlayCountPairs implements Writable, Iterable<SongPlayCountPair>
     @Override
     public void readFields(DataInput in) throws IOException {
         int count = in.readInt();
-        pairs = new ArrayList<SongPlayCountPair>();
+        pairs = new ArrayList<SongPlayCount>();
         for(int i = 0;i < count; i++){
-            pairs.add(new SongPlayCountPair(in.readInt(), in.readShort()));
+            pairs.add(new SongPlayCount(in.readInt(), in.readShort()));
         }
     }
 
     @Override
-    public Iterator<SongPlayCountPair> iterator() {
+    public Iterator<SongPlayCount> iterator() {
         return pairs.iterator();
     }
     
@@ -46,14 +45,14 @@ public class SongPlayCountPairs implements Writable, Iterable<SongPlayCountPair>
         return pairs.size();
     }
 
-    public SongPlayCountPair get(int index){
+    public SongPlayCount get(int index){
         return pairs.get(index);
     }
 
     @Override
     public String toString() {
         String result = "";
-        for(SongPlayCountPair pair : pairs)
+        for(SongPlayCount pair : pairs)
             result += "(" + pair.songId() + "," + pair.playCount() + "),";
         return result;
     }

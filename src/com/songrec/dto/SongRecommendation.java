@@ -1,32 +1,33 @@
 package com.songrec.dto;
 
 import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.WritableUtils;
 
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
 public class SongRecommendation implements Writable, Comparable<SongRecommendation> {
-    private int songId;
+    private String songId;
     private double predictedPlayCount;
 
     public SongRecommendation() {
     }
 
-    public SongRecommendation(int songId, double predictedPlayCount) {
+    public SongRecommendation(String songId, double predictedPlayCount) {
         this.songId = songId;
         this.predictedPlayCount = predictedPlayCount;
     }
 
     @Override
     public void write(DataOutput out) throws IOException {
-        out.writeInt(songId);
+        WritableUtils.writeString(out, songId);
         out.writeDouble(predictedPlayCount);
     }
 
     @Override
     public void readFields(DataInput in) throws IOException {
-        this.songId = in.readInt();
+        this.songId = WritableUtils.readString(in);
         this.predictedPlayCount = in.readDouble();
     }
 

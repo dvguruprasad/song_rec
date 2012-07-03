@@ -1,7 +1,7 @@
 package com.songrec.reducers;
 
 import com.songrec.dto.SongVectorOrSimilarityScores;
-import com.songrec.dto.UserPlayCountPair;
+import com.songrec.dto.UserPlayCount;
 import com.songrec.dto.UserPlayCounts;
 import com.songrec.utils.BoundedPriorityQueue;
 import com.songrec.workflows.Thresholds;
@@ -11,12 +11,12 @@ import org.apache.hadoop.mapreduce.Reducer;
 import java.io.IOException;
 import java.util.Comparator;
 
-public class SongVectorGeneratorReducer extends Reducer<IntWritable, UserPlayCountPair, IntWritable, SongVectorOrSimilarityScores> {
+public class SongVectorGeneratorReducer extends Reducer<IntWritable, UserPlayCount, IntWritable, SongVectorOrSimilarityScores> {
     @Override
-    protected void reduce(IntWritable songId, Iterable<UserPlayCountPair> pairs, Context context) throws IOException, InterruptedException {
-        BoundedPriorityQueue<UserPlayCountPair> queue = new BoundedPriorityQueue<UserPlayCountPair>(Thresholds.MAXIMUM_NUMBER_OF_USERS, userPlayCountComparator());
-        for (UserPlayCountPair pair : pairs) {
-            queue.add(new UserPlayCountPair(pair.userId(), pair.playCount()));
+    protected void reduce(IntWritable songId, Iterable<UserPlayCount> pairs, Context context) throws IOException, InterruptedException {
+        BoundedPriorityQueue<UserPlayCount> queue = new BoundedPriorityQueue<UserPlayCount>(Thresholds.MAXIMUM_NUMBER_OF_USERS, userPlayCountComparator());
+        for (UserPlayCount pair : pairs) {
+            queue.add(new UserPlayCount(pair.userId(), pair.playCount()));
         }
 
         UserPlayCounts userPlayCounts = new UserPlayCounts(queue.retrieve());
@@ -25,10 +25,10 @@ public class SongVectorGeneratorReducer extends Reducer<IntWritable, UserPlayCou
         context.write(songId, new SongVectorOrSimilarityScores(userPlayCounts));
     }
 
-    private Comparator<UserPlayCountPair> userPlayCountComparator() {
-        return new Comparator<UserPlayCountPair>() {
+    private Comparator<UserPlayCount> userPlayCountComparator() {
+        return new Comparator<UserPlayCount>() {
             @Override
-            public int compare(UserPlayCountPair one, UserPlayCountPair another) {
+            public int compare(UserPlayCount one, UserPlayCount another) {
                 return one.playCount() > another.playCount() ? 1 :
                         (one.playCount() < another.playCount() ? -1 : 0);
             }

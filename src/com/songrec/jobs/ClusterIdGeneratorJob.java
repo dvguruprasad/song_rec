@@ -30,7 +30,5 @@ public class ClusterIdGeneratorJob extends AbstactJob {
 
         job.setMapperClass(ClusterIdGeneratorMapper.class);
         job.setReducerClass(ClusterIdGeneratorReducer.class);
-
-        job.setNumReduceTasks(10);
     }
 }

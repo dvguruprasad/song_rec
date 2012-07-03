@@ -24,7 +24,5 @@ public class GroupUsersByClusterJob extends AbstactJob {
 
         job.setMapperClass(GroupUsersByClusterMapper.class);
         job.setReducerClass(GroupUsersByClusterReducer.class);
-
-        job.setNumReduceTasks(10);
     }
 }

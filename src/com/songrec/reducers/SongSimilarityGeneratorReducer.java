@@ -3,6 +3,7 @@ package com.songrec.reducers;
 import com.songrec.algorithms.PearsonCorrelationSimilarity;
 import com.songrec.dto.*;
 import com.songrec.utils.BoundedPriorityQueue;
+import com.songrec.workflows.Thresholds;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.mapreduce.Reducer;
 
@@ -10,13 +11,28 @@ import java.io.IOException;
 import java.util.*;
 
 public class SongSimilarityGeneratorReducer extends Reducer<IntWritable, PlayCountPairsMap, IntWritable, SongVectorOrSimilarityScores> {
-
-    public static final int SIMILARITY_SCORE_THRESHOLD = 0;
-    public static final int MINIMUM_NUMBER_OF_PLAYCOUNTS = 3;
-
     @Override
     protected void reduce(IntWritable songId, Iterable<PlayCountPairsMap> playCountVectors, Context context) throws IOException, InterruptedException {
         Iterator<PlayCountPairsMap> iterator = playCountVectors.iterator();
+        PlayCountPairsMap aggregatedMap = new PlayCountPairsMap(mergeMaps(iterator));
+        BoundedPriorityQueue<SimilarityScore> topSimilarityScores = new BoundedPriorityQueue<SimilarityScore>(10);
+
+        for (Map.Entry<Integer, List<PlayCountPair>> entry : aggregatedMap.entrySet()) {
+            if (entry.getValue().size() < Thresholds.MINIMUM_NUMBER_SONGS_TO_COMPARE)
+                continue;
+
+            double similarityScore = similarityScore(entry.getValue());
+            if (similarityScore > Thresholds.MINIMUM_SIMILARITY_SCORE)
+                topSimilarityScores.add(new SimilarityScore(entry.getKey(), similarityScore));
+        }
+
+        ArrayList<SimilarityScore> result = topSimilarityScores.retrieve();
+        if (!result.isEmpty()) {
+            context.write(songId, new SongVectorOrSimilarityScores(new SimilarityScores(result)));
+        }
+    }
+
+    private HashMap<Integer, List<PlayCountPair>> mergeMaps(Iterator<PlayCountPairsMap> iterator) {
         HashMap<Integer, List<PlayCountPair>> map = new HashMap<Integer, List<PlayCountPair>>();
 
         while (iterator.hasNext()) {
@@ -29,22 +45,7 @@ public class SongSimilarityGeneratorReducer extends Reducer<IntWritable, PlayCou
                 }
             }
         }
-        PlayCountPairsMap aggregatedMap = new PlayCountPairsMap(map);
-        BoundedPriorityQueue<SimilarityScore> topSimilarityScores = new BoundedPriorityQueue<SimilarityScore>(10);
-
-        for (Map.Entry<Integer, List<PlayCountPair>> entry : aggregatedMap.entrySet()) {
-            if (entry.getValue().size() < MINIMUM_NUMBER_OF_PLAYCOUNTS)
-                continue;
-
-            double similarityScore = similarityScore(entry.getValue());
-            if (similarityScore > SIMILARITY_SCORE_THRESHOLD)
-                topSimilarityScores.add(new SimilarityScore(entry.getKey(), similarityScore));
-        }
-
-        ArrayList<SimilarityScore> result = topSimilarityScores.retrieve();
-        if (!result.isEmpty()) {
-            context.write(songId, new SongVectorOrSimilarityScores(new SimilarityScores(result)));
-        }
+        return map;
     }
 
     private double similarityScore(List<PlayCountPair> playCountPairs) {

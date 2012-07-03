@@ -63,6 +63,7 @@ public class BoundedPriorityQueueTest {
         Assert.assertEquals(new Foo("r", 55), queue.poll());
         Assert.assertEquals(new Foo("q", 80), queue.poll());
         Assert.assertEquals(new Foo("z", 100), queue.poll());
+        System.out.println(HashingX.hash("XFWERV123134"));
     }
 
 

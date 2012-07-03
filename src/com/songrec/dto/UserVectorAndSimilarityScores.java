@@ -7,14 +7,14 @@ import java.io.DataOutput;
 import java.io.IOException;
 
 public class UserVectorAndSimilarityScores implements Writable {
-    SongPlayCountPair song;
+    SongPlayCount song;
     SimilarityScores similarityScores;
 
     public UserVectorAndSimilarityScores() {
     }
 
-    public UserVectorAndSimilarityScores(SongPlayCountPair songPlayCountPair, SimilarityScores similarityScores) {
-        this.song = songPlayCountPair;
+    public UserVectorAndSimilarityScores(SongPlayCount songPlayCount, SimilarityScores similarityScores) {
+        this.song = songPlayCount;
         this.similarityScores = similarityScores;
     }
 
@@ -26,13 +26,13 @@ public class UserVectorAndSimilarityScores implements Writable {
 
     @Override
     public void readFields(DataInput in) throws IOException {
-        song = new SongPlayCountPair();
+        song = new SongPlayCount();
         song.readFields(in);
         similarityScores = new SimilarityScores();
         similarityScores.readFields(in);
     }
 
-    public SongPlayCountPair getSong() {
+    public SongPlayCount getSong() {
         return song;
     }
 

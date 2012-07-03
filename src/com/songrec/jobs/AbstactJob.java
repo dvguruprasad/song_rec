@@ -38,6 +38,7 @@ public abstract class AbstactJob extends Configured implements Tool {
         Job job = new Job(getConf(), name());
         FileInputFormat.setInputPaths(job, toPaths(inputPaths));
         FileOutputFormat.setOutputPath(job, new Path(outputPath));
+        job.setNumReduceTasks(10);
         return job;
     }
 

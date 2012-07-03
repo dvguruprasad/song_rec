@@ -14,7 +14,7 @@ public class CovisitationCountReducer extends Reducer<SongPair, IntWritable, Son
     private static Map<Integer,String> itemIdToHashMap;
 
     protected void setup(Context context) throws IOException, InterruptedException {
-        itemIdToHashMap = FileUtils.getItemIdToHashMap(new Path(context.getConfiguration().get(SongIdHashJob.SONG_ID_HASH_PATH)), context.getConfiguration());
+        itemIdToHashMap = FileUtils.songIdHashMap(new Path(context.getConfiguration().get(SongIdHashJob.SONG_ID_HASH_PATH)), context.getConfiguration());
     }
 
     @Override

@@ -12,10 +12,10 @@ public class RecommenderMapper extends Mapper<IntWritable, SongVectorAndSimilari
     protected void map(IntWritable songId, SongVectorAndSimilarityScores songVectorAndSimilarityScores, Context context) throws IOException, InterruptedException {
         UserPlayCounts playCounts = songVectorAndSimilarityScores.getPlayCounts();
         for(Map.Entry<Integer, Short> playCount : playCounts.entrySet()){
-            SongPlayCountPair songPlayCountPair = new SongPlayCountPair(songId.get(), playCount.getValue());
-            UserVectorAndSimilarityScores value = new UserVectorAndSimilarityScores(songPlayCountPair, songVectorAndSimilarityScores.getSimilarityScores());
+            SongPlayCount songPlayCount = new SongPlayCount(songId.get(), playCount.getValue());
+            UserVectorAndSimilarityScores userVectorAndSimilarityScores = new UserVectorAndSimilarityScores(songPlayCount, songVectorAndSimilarityScores.getSimilarityScores());
             Integer userId = playCount.getKey();
-            context.write(new IntWritable(userId), value);
+            context.write(new IntWritable(userId), userVectorAndSimilarityScores);
         }
     }
 }

@@ -28,8 +28,6 @@ public class SongVectorAndSimilaritiesGeneratorJob extends AbstactJob {
         job.setOutputKeyClass(IntWritable.class);
         job.setOutputValueClass(SongVectorAndSimilarityScores.class);
         job.setOutputFormatClass(SequenceFileOutputFormat.class);
-
-        job.setNumReduceTasks(10);
     }
 
     public static void main(String args[]) throws Exception {

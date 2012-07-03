@@ -3,8 +3,8 @@ package com.songrec.mappers;
 import com.songrec.Counters;
 import com.songrec.dto.PlayCountPair;
 import com.songrec.dto.PlayCountPairsMap;
-import com.songrec.dto.SongPlayCountPair;
-import com.songrec.dto.SongPlayCountPairs;
+import com.songrec.dto.SongPlayCount;
+import com.songrec.dto.SongPlayCounts;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Counter;
@@ -25,15 +25,15 @@ public class SongSimilarityGeneratorMapperTest {
         SongSimilarityGeneratorMapper mapper = new SongSimilarityGeneratorMapper();
         Mapper.Context mockContext = mock(Mapper.Context.class);
 
-        ArrayList<SongPlayCountPair> list = new ArrayList<SongPlayCountPair>();
+        ArrayList<SongPlayCount> list = new ArrayList<SongPlayCount>();
         list.add(songPlayCountPair(11, 4));
         list.add(songPlayCountPair(33, 8));
         list.add(songPlayCountPair(66, 7));
         list.add(songPlayCountPair(99, 2));
-        SongPlayCountPairs songPlayCountPairs = new SongPlayCountPairs(list);
+        SongPlayCounts songPlayCounts = new SongPlayCounts(list);
         when(mockContext.getCounter(Counters.TIME_SPENT_IN_COMPUTAION_OF_SIMILARITIES)).thenReturn(mock(Counter.class));
 
-        mapper.map(new Text("userId"), songPlayCountPairs, mockContext);
+        mapper.map(new Text("userId"), songPlayCounts, mockContext);
 
         HashMap<Integer, List<PlayCountPair>> map_11 = new HashMap<Integer, List<PlayCountPair>>();
         map_11.put(33, Arrays.asList(playCountPair(4, 8)));
@@ -59,7 +59,7 @@ public class SongSimilarityGeneratorMapperTest {
         return new PlayCountPair((short) firstPlayCount, (short) secondPlayCount);
     }
 
-    private SongPlayCountPair songPlayCountPair(int songId, int playCountPair) {
-        return new SongPlayCountPair(songId, (short) playCountPair);
+    private SongPlayCount songPlayCountPair(int songId, int playCountPair) {
+        return new SongPlayCount(songId, (short) playCountPair);
     }
 }
